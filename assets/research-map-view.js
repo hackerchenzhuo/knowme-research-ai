@@ -54,10 +54,10 @@ export function createResearchMapVisual(canvas, { onSelect = () => {}, onViewCha
       if (emphasized) selectedEdges.push([a, b, edge]);
       else if (edgeIndex % edgeStride === 0 && !((a.x < view[0] && b.x < view[0]) || (a.x > view[0] + view[2] && b.x > view[0] + view[2]) || (a.y < view[1] && b.y < view[1]) || (a.y > view[1] + view[3] && b.y > view[1] + view[3]))) { ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); }
     }
-    ctx.strokeStyle = active.size || query ? '#cfdbd4' : '#92ada4'; ctx.globalAlpha = active.size || query ? .18 : .15; ctx.lineWidth = .6 / scale; ctx.stroke();
+    ctx.strokeStyle = active.size || query ? '#d5e1ef' : '#91aac9'; ctx.globalAlpha = active.size || query ? .18 : .15; ctx.lineWidth = .6 / scale; ctx.stroke();
     ctx.beginPath();
     for (const [a, b] of selectedEdges) { ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); }
-    ctx.globalAlpha = .58; ctx.strokeStyle = '#317b67'; ctx.lineWidth = 1.1 / scale; ctx.stroke();
+    ctx.globalAlpha = .58; ctx.strokeStyle = '#2f6fbc'; ctx.lineWidth = 1.1 / scale; ctx.stroke();
 
     const buckets = new Map();
     const cells = new Set(); drawn = [];
@@ -81,10 +81,10 @@ export function createResearchMapVisual(canvas, { onSelect = () => {}, onViewCha
     }
     for (const node of drawn) {
       if (state.personal && node.attention > 0) {
-        ctx.beginPath(); ctx.arc(node.x, node.y, radius(node) + 9 + Math.min(8, node.attention), 0, Math.PI * 2); ctx.globalAlpha = .11; ctx.fillStyle = '#2d957a'; ctx.fill();
+        ctx.beginPath(); ctx.arc(node.x, node.y, radius(node) + 9 + Math.min(8, node.attention), 0, Math.PI * 2); ctx.globalAlpha = .11; ctx.fillStyle = '#5a8dc9'; ctx.fill();
       }
       if (node.id === state.selected || node.id === hovered) {
-        ctx.beginPath(); ctx.arc(node.x, node.y, radius(node) + 4 / scale, 0, Math.PI * 2); ctx.globalAlpha = .85; ctx.strokeStyle = '#225e4d'; ctx.lineWidth = 1.2 / scale; ctx.stroke();
+        ctx.beginPath(); ctx.arc(node.x, node.y, radius(node) + 4 / scale, 0, Math.PI * 2); ctx.globalAlpha = .85; ctx.strokeStyle = '#245a99'; ctx.lineWidth = 1.2 / scale; ctx.stroke();
       }
     }
     const labels = [], labelIds = new Set(), wanted = query ? 35 : state.paperId ? 30 : 23;
@@ -98,8 +98,8 @@ export function createResearchMapVisual(canvas, { onSelect = () => {}, onViewCha
       const x = node.x + radius(node) + 4 / scale, y = node.y, w = ctx.measureText(node.name).width, h = 14 / scale;
       const bounds = { x, y: y - h / 2, w: w + 5 / scale, h };
       if (node.id !== state.selected && node.id !== hovered && occupied.some(box => bounds.x < box.x + box.w && bounds.x + bounds.w > box.x && bounds.y < box.y + box.h && bounds.y + bounds.h > box.y)) continue;
-      occupied.push(bounds); ctx.globalAlpha = .88; ctx.strokeStyle = '#fbfdfb'; ctx.lineWidth = 3 / scale; ctx.lineJoin = 'round'; ctx.strokeText(node.name, x, y);
-      ctx.fillStyle = node.id === state.selected ? '#1b5442' : '#36594f'; ctx.globalAlpha = 1; ctx.fillText(node.name, x, y);
+      occupied.push(bounds); ctx.globalAlpha = .88; ctx.strokeStyle = '#fafcff'; ctx.lineWidth = 3 / scale; ctx.lineJoin = 'round'; ctx.strokeText(node.name, x, y);
+      ctx.fillStyle = node.id === state.selected ? '#244d7c' : '#3c5878'; ctx.globalAlpha = 1; ctx.fillText(node.name, x, y);
     }
     ctx.globalAlpha = 1;
     canvas.dataset.nodeCount = String(graph.nodes.length); canvas.dataset.edgeCount = String(graph.edges.length);
