@@ -1,30 +1,35 @@
 <p align="right"><sub>简体中文 | <a href="./README.en.md">English</a></sub></p>
 
-<p align="center"><img src="assets/readme-hero-zh-v1.webp" width="100%" alt="知我 · 多维评分筛选论文 · 与自己的研究定制化关联"></p>
+<img src="assets/knowme.svg" width="40" height="40" alt="知我">
 
-<p align="center"><a href="https://hackerchenzhuo.github.io/knowme-research-ai/">官网 ↗</a> · <a href="https://hackerchenzhuo.github.io/knowme-research-ai/#guide">使用指南</a> · <a href="https://github.com/hackerchenzhuo/knowme-research-ai/issues">反馈与建议</a></p>
+# 知我 · KnowMe
 
-## 两款工具
+论文选读与翻译工具。本仓库维护官网和使用文档。
+
+[官网](https://hackerchenzhuo.github.io/knowme-research-ai/) · [使用指南](https://hackerchenzhuo.github.io/knowme-research-ai/#guide) · [反馈与建议](https://github.com/hackerchenzhuo/knowme-research-ai/issues)
 
 | 工具 | 用途 | 安装 |
 |---|---|---|
-| **知我论文雷达** | 按研究方向组织 arXiv 论文，多维证据可查，缓存可复用 | [Chrome 商店 ↗](https://chromewebstore.google.com/detail/aneomkhamcijmfmeeegocbknklflilof) |
-| **AI 翻译** | 划词或快捷唤起，保留 Markdown 结构与个人译法 | [Chrome 商店 ↗](https://chromewebstore.google.com/detail/ggbnigoglmfkdfmjggiifmfoinncblgm) |
+| 知我论文雷达 | 按研究方向整理 arXiv 论文，查看证据，安排阅读优先级 | [Chrome 商店](https://chromewebstore.google.com/detail/aneomkhamcijmfmeeegocbknklflilof) |
+| AI 翻译 | 划词或快捷唤起翻译，保留 Markdown 结构与个人译法 | [Chrome 商店](https://chromewebstore.google.com/detail/ggbnigoglmfkdfmjggiifmfoinncblgm) |
 
-免费安装。AI 翻译使用自己的模型连接，模型服务可能计费。
+## 论文雷达
 
-## 让排序，贴近你的研究
+- 选择研究专题，或自定义 arXiv 类目、英文关键词、日期范围和排除项。
+- 结合相关性、时效与个人偏好安排选读顺序，展开查看作者与机构线索、评分构成和来源。
+- 按论文标识合并重复记录，保留版本信息；检索缓存、收藏与设置保存在所选本地数据源：浏览器存储，或已连接的本地论文库。
+- 在 arXiv 和 Google Scholar 页面查看已收录论文的标注，继续查找相关工作。
 
-AI 研究持续增长。研究相关性、作者与机构证据、时效和个人偏好分层计算，帮助确定阅读优先级。研究方向与公开证据变化，私人权重随之调整。[了解评分与图谱 ↗](https://hackerchenzhuo.github.io/knowme-research-ai/#ranking)
+首次使用可先选 1–3 个专题，执行一次联网更新，再查看证据并收藏。之后可用「仅用缓存」重复筛选已保存的资料；获取新论文时再联网更新。常规检索与排序无需模型 API Key。
 
-<p align="center"><a href="https://hackerchenzhuo.github.io/knowme-research-ai/#experience"><img src="assets/product-tour.webp?v=20261024-gallery" alt="论文雷达多篇公开论文的高清滑动预览" width="100%"></a></p>
+## AI 翻译
 
-<p align="center"><a href="https://hackerchenzhuo.github.io/knowme-research-ai/#experience">浏览实际界面 ↗</a></p>
+选中文字或使用快捷键唤起翻译，保留 Markdown 结构，并沿用个人术语与译法。安装后配置自己的模型连接即可使用；模型服务可能计费。
 
-<sub>公开论文示例仅作功能演示，不代表作者或机构背书。</sub>
+两款工具均可免费安装。更换设备或浏览器前，可先导出需要保留的数据；具体操作见[使用指南](https://hackerchenzhuo.github.io/knowme-research-ai/#guide)。
 
-## 欢迎
+## 更新
 
-个人维护，免费分享。遇到问题或有新想法，欢迎在 [Issues](https://github.com/hackerchenzhuo/knowme-research-ai/issues) 留言。
+截至 2026-11-15，论文雷达公开商店版本为 **1.2.5**；**1.2.6 已提交审核**，修复外部书目记录中重复分配作者–机构关系的问题。
 
-[更新记录](https://hackerchenzhuo.github.io/knowme-research-ai/#updates) · [论文雷达隐私](https://hackerchenzhuo.github.io/knowme-research-ai/radar-privacy.html) · [AI 翻译隐私](https://hackerchenzhuo.github.io/knowme-research-ai/privacy.html)
+[更新记录](./CHANGELOG.md) · [论文雷达隐私](https://hackerchenzhuo.github.io/knowme-research-ai/radar-privacy.html) · [AI 翻译隐私](https://hackerchenzhuo.github.io/knowme-research-ai/privacy.html)

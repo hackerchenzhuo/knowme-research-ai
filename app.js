@@ -220,28 +220,130 @@ render();
 (function mountPersonalPreview() {
  const root=document.getElementById('personal-ranking-preview'),source=document.getElementById('personal-preview-data');
  if(!root||!source)return;
- const data=JSON.parse(source.textContent),en=document.documentElement.lang==='en';
- let selectedPaper=data.papers[0].id,selectedProfile='agents';
+ let data;
+ try{data=JSON.parse(source.textContent)}catch{return;}
+ const papers=Array.isArray(data.papers)?data.papers:[];
+ if(!papers.length)return;
+ const en=document.documentElement.lang==='en',current=data.schema==='knowme-personal-preview-v2';
+ const configured=data.configuration?.currentExplicitPresets||[];
  const names={berkeley:'UC Berkeley',washington:'University of Washington',princeton:'Princeton University',stanford:'Stanford University',meta:'Meta'};
- function show(){
-  const paper=data.papers.find(p=>p.id===selectedPaper),sample=paper.cases.find(c=>c.id===selectedProfile);
-  root.querySelectorAll('[data-personal-profile]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.personalProfile===selectedProfile)));
-  root.querySelectorAll('[data-personal-paper]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.personalPaper===selectedPaper)));
-  root.querySelector('[data-personal-title]').textContent=paper.short+' · '+paper.id;
-  root.querySelector('[data-personal-source]').href=paper.url;
-  for(const [field,value]of [['base',sample.base],['author-adjustment',sample.authorAdjustment],['institution-adjustment',sample.institutionAdjustment],['total',sample.total]])root.querySelector('[data-personal-'+field+']').textContent=value.toFixed(1);
-  const rows=root.querySelector('[data-personal-rows]');rows.replaceChildren();
-  for(const item of [...sample.authors,...sample.institutions]){
-   const tr=document.createElement('tr'),th=document.createElement('th'),td=document.createElement('td');th.scope='row';th.textContent=en?(names[item.id]||item.name):item.name;
-   const weight=document.createElement('span');weight.textContent='×'+item.weight.toFixed(3);td.append(weight);
-   const track=document.createElement('span'),fill=document.createElement('i');track.className='personal-weight-track';track.setAttribute('aria-hidden','true');fill.style.width=Math.max(0,Math.min(100,(item.weight-.5)*100))+'%';track.append(fill);td.append(track);tr.append(th,td);rows.append(tr);
-  }
-  root.querySelector('[data-personal-weight-note]').textContent=en?'1 is neutral. Authors without sufficient resolved bibliography retain neutral weights.':'×1 为中性；缺少足够身份与书目依据的作者保持中性，不作质量判断。';
-  const details=root.querySelector('[data-personal-evidence]');details.replaceChildren();
-  for(const institution of sample.institutions){const p=document.createElement('p');p.textContent=(en?(names[institution.id]||institution.name):institution.name)+' · '+institution.papers.toLocaleString()+(en?' evidenced papers · ':' 篇已核书目 · ')+institution.keywords.join(' / ');details.append(p);for(const example of institution.examples.slice(0,1)){const a=document.createElement('a');a.href=example.url;a.target='_blank';a.rel='noopener noreferrer';a.textContent=example.title+' ↗';details.append(a);}}
-  root.dataset.personalCurrent=selectedProfile;root.dataset.paperCurrent=selectedPaper;
+ const topicNames={'agent-harness':en?'Agents / harness':'Agent / Harness',reasoning:en?'Reasoning':'推理','multimodal-fusion':en?'Multimodal':'多模态'};
+ const keywordNames={'Agent 与 Harness':'Agents / harness','推理方法与后训练':'Reasoning / post-training','多模态大模型':'Multimodal models'};
+ const numeric=value=>typeof value==='number'&&Number.isFinite(value);
+ const number=(value,digits=1)=>numeric(value)?value.toFixed(digits):'—';
+ const signed=value=>numeric(value)?(value>0?'+':'')+value.toFixed(1):'—';
+ const list=value=>Array.isArray(value)?value:[];
+ const evidenceState=value=>value==='insufficient-evidence'?(en?'Insufficient evidence':'证据不足'):value==='missing'?(en?'Missing source record':'缺少来源记录'):value==='unavailable'?(en?'Not available':'暂无来源项'):String(value).replace(/[-_]/g,' ');
+ const title=item=>en?(names[item.id]||item.nameEn||item.name||item.id||'—'):(item.name||item.nameEn||item.id||'—');
+ let selectedPaper=papers[0].id,selectedProfile='agents';
+ function set(selector,text){const node=root.querySelector(selector);if(node)node.textContent=text;}
+ function status(){
+  let node=root.querySelector('[data-personal-eligibility]');
+  if(!node){node=document.createElement('p');node.className='personal-weight-note';node.setAttribute('data-personal-eligibility','');node.setAttribute('role','status');root.querySelector('.personal-preview-heading')?.after(node);}
+  return node;
  }
- root.querySelectorAll('[data-personal-profile]').forEach(b=>b.addEventListener('click',()=>{selectedProfile=b.dataset.personalProfile;show()}));
- root.querySelectorAll('[data-personal-paper]').forEach(b=>b.addEventListener('click',()=>{selectedPaper=b.dataset.personalPaper;show()}));
+ function row(label,value,state){
+  const tr=document.createElement('tr'),th=document.createElement('th'),td=document.createElement('td');
+  th.scope='row';th.textContent=label;td.textContent=value;
+  if(state&&state!=='ready'){
+   const note=document.createElement('small');note.textContent=(en?'Evidence: ':'证据状态：')+evidenceState(state);td.append(document.createElement('br'),note);
+  }
+  tr.append(th,td);return tr;
+ }
+ function paragraph(container,text){const p=document.createElement('p');p.textContent=text;container.append(p);}
+ function examples(container,items){
+  for(const item of list(items).slice(0,1)){
+   if(typeof item.url!=='string'||!/^https?:\/\//.test(item.url))continue;
+   const a=document.createElement('a');a.href=item.url;a.target='_blank';a.rel='noopener noreferrer';a.textContent=(item.title||item.url)+' ↗';container.append(a);
+  }
+ }
+ const paperSwitch=root.querySelector('.personal-paper-switch');
+ if(paperSwitch){
+  paperSwitch.replaceChildren();
+  for(const paper of papers){const button=document.createElement('button');button.type='button';button.dataset.personalPaper=paper.id;button.textContent=paper.short||paper.title||paper.id;button.addEventListener('click',()=>{selectedPaper=paper.id;show()});paperSwitch.append(button);}
+ }
+ root.querySelectorAll('[data-personal-profile]').forEach(button=>{
+  const preset=configured.find(p=>p.id===button.dataset.personalProfile);
+  if(current&&preset)button.textContent=en?(preset.nameEn||preset.name):preset.name;
+  if(!current){const historical=list(papers[0].cases).find(p=>p.id===button.dataset.personalProfile);if(historical)button.textContent=en?(historical.nameEn||historical.name):historical.name;}
+  button.addEventListener('click',()=>{selectedProfile=button.dataset.personalProfile;show()});
+ });
+ function show(){
+  const paper=papers.find(p=>p.id===selectedPaper)||papers[0];
+  const sample=list(paper.cases).find(c=>c.id===selectedProfile);
+  const available=Boolean(sample)&&sample.state!=='missing-paper';
+  const preset=configured.find(p=>p.id===selectedProfile);
+  root.querySelectorAll('[data-personal-profile]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.personalProfile===selectedProfile)));
+  root.querySelectorAll('[data-personal-paper]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.personalPaper===paper.id)));
+  set('[data-personal-title]',(paper.short||paper.title||paper.id)+' · '+paper.id);
+  const link=root.querySelector('[data-personal-source]');if(link&&paper.url)link.href=paper.url;
+  for(const [field,key] of [['base','base'],['author-adjustment','authorAdjustment'],['institution-adjustment','institutionAdjustment'],['total','total']])set('[data-personal-'+field+']',number(available?sample[key]:null));
+  const rows=root.querySelector('[data-personal-rows]');if(rows)rows.replaceChildren();
+  const details=root.querySelector('[data-personal-evidence]');if(details)details.replaceChildren();
+  const flag=status();
+  if(current){
+   const definitions=list(preset?.topics).map(t=>(topicNames[t.id]||t.name||t.id)+(en?' priority ':'，优先级 ')+t.priority).join(en?'; ':'；');
+   set('[data-personal-preset-label]',(en?'Current example preset · ':'当前示例预设 · ')+definitions);
+   const headings=root.querySelectorAll('thead th');if(headings[0])headings[0].textContent=en?'Evidence source':'来源项';if(headings[1])headings[1].textContent=en?'Fit / weight · G':'匹配 / 权重 · G';
+   const caption=root.querySelector('table caption');if(caption)caption.textContent=en?'Author fit and weight, and separate institutional G scores':'作者匹配与权重，以及独立的机构 G 分数';
+   if(!available){flag.textContent=en?'Paper missing from this source snapshot':'当前来源快照中缺少该论文';flag.dataset.state='missing';}
+   else if(sample.eligibleForPreset===false){flag.textContent=en?'Outside this preset':'不纳入该方向清单';flag.dataset.state='outside';}
+   else if(sample.eligibleForPreset===true){flag.textContent=en?'Eligible for this preset':'符合该方向筛选';flag.dataset.state='eligible';}
+   else{flag.textContent=en?'Preset eligibility unavailable':'当前预设资格未提供';flag.dataset.state='unknown';}
+   if(available&&rows){
+    for(const author of list(sample.authors))rows.append(row(title(author)+(en?' · Author':' · 作者'),(numeric(author.fit)?number(author.fit)+'%':'—')+' · ×'+number(author.weight,3),author.state));
+    for(const institution of list(sample.institutions))rows.append(row(title(institution)+(en?' · Institution':' · 机构'),'G '+number(institution.graphScore,3),institution.state));
+    if(!list(sample.authors).length)rows.append(row(en?'Author evidence':'作者证据',evidenceState(sample.missing?.personalAuthorState||'unavailable')));
+    if(!list(sample.institutions).length)rows.append(row(en?'Institution evidence':'机构证据',evidenceState(sample.missing?.personalInstitutionState||'unavailable')));
+   }
+   set('[data-personal-weight-note]',en?'Author fit and weight are shown separately from institutional G; paper adjustments use the actual aggregate.':'作者匹配与权重、机构 G 分别展示，论文加分读取实际汇总。');
+   const labels=root.querySelectorAll('.personal-equation small');
+   [en?'Base score':'基础分',en?'Author adjustment':'作者调整',en?'Institution adjustment':'机构加分',sample?.eligibleForPreset===false?(en?'Not selected · score details':'未入选 · 分数供查看'):(en?'Personal score':'个人分')].forEach((text,i)=>{if(labels[i])labels[i].textContent=text;});
+   const cached=data.configuration?.sourceSnapshot?.latestRecordCachedAt;
+   const cachedDate=typeof cached==='string'?cached.slice(0,10):'—';
+   const note=root.querySelector('[data-personal-preview-note]')||root.querySelector('.personal-preview-note');
+   if(note)note.textContent=en?'Current example presets. Public bibliography cached '+cachedDate+'; scores computed '+(data.asOf||'—')+'. Base is evaluated separately for each preset.':'当前示例预设。公开书目缓存日期：'+cachedDate+'；示例计算日期：'+(data.asOf||'—')+'。基础分按所选预设分别计算。';
+   const method=root.querySelector('.personal-method > p');if(method)method.textContent=en?'Author fit is a percentage; × is the author weight. Adjustments and totals come directly from the product result. Institution G values are not added together and do not determine whether the paper matches this preset. Base is evaluated per preset.':'作者匹配是百分比，× 表示作者权重。调整项与总分直接读取产品结果；机构各行 G 不相加，也不决定论文是否匹配所选方向。基础分按预设分别计算。';
+   if(details){
+    paragraph(details,(en?'Product rules: ':'计算使用产品规则：')+(data.runtime?.productVersion||'—'));
+    if(preset)paragraph(details,(en?'Preset: ':'预设：')+definitions);
+    if(!available)paragraph(details,en?'No computed score is available for this paper in the source snapshot.':'该论文在来源快照中没有可用的计算分数。');
+    if(available){
+     for(const author of list(sample.authors)){
+      paragraph(details,title(author)+' · '+(en?'Fit ':'匹配 ')+(numeric(author.fit)?number(author.fit)+'%':'—')+' · ×'+number(author.weight,3)+' · '+(en?'Adjustment ':'调整 ')+signed(author.adjustment)+(author.state&&author.state!=='ready'?' · '+author.state:''));
+      examples(details,author.examples);
+     }
+     for(const institution of list(sample.institutions)){
+      const count=numeric(institution.papers)?institution.papers.toLocaleString(en?'en-US':'zh-CN'):'—';
+      const keywords=list(institution.keywords).map(k=>en?(keywordNames[k]||k):k).join(' / ');
+      paragraph(details,title(institution)+' · G '+number(institution.graphScore,3)+' · '+count+(en?' source papers':' 篇来源论文')+(keywords?' · '+keywords:'')+(institution.state&&institution.state!=='ready'?' · '+institution.state:''));
+      examples(details,institution.examples);
+     }
+     for(const [key,label] of [['personalAuthorState',en?'Author evidence':'作者证据'],['personalInstitutionState',en?'Institution evidence':'机构证据']]){const value=sample.missing?.[key];if(value&&value!=='ready')paragraph(details,label+': '+evidenceState(value));}
+    }
+   }
+  }else{
+   // The new script can reach an older page during directory-by-directory publication.
+   // Historical institution multipliers remain historical; they never become G.
+   set('[data-personal-preset-label]',en?'Historical example · Full original settings were not saved':'历史示例 · 原始完整配置未保存');
+   flag.textContent=en?'Historical example; preset eligibility was not recorded':'历史示例，未记录方向清单资格';flag.dataset.state='historical';
+   const headings=root.querySelectorAll('thead th');if(headings[0])headings[0].textContent=en?'Historical source':'历史来源项';if(headings[1])headings[1].textContent=en?'Historical weight':'历史权重';
+   const caption=root.querySelector('table caption');if(caption)caption.textContent=en?'Historical author and institution multipliers; not current G scores':'历史作者与机构乘数，非当前 G 分数';
+   if(available&&rows){
+    for(const author of list(sample.authors))rows.append(row(title(author)+(en?' · Author':' · 作者'),'×'+number(author.weight,3),author.state));
+    for(const institution of list(sample.institutions))rows.append(row(title(institution)+(en?' · Historical institution':' · 旧版机构'),'×'+number(institution.weight,3)+(en?' (not G)':'（非 G）'),institution.state));
+   }
+   set('[data-personal-weight-note]',en?'Historical multipliers from the original example. Institution weights are not the current G scores.':'原历史示例中的乘数；旧版机构权重不是当前 G 分数。');
+   const labels=root.querySelectorAll('.personal-equation small');
+   [en?'Historical base':'历史基础分',en?'Author adjustment':'作者调整',en?'Old institution term':'旧版机构调整',en?'Historical total':'历史个人分'].forEach((text,i)=>{if(labels[i])labels[i].textContent=text;});
+   const note=root.querySelector('[data-personal-preview-note]')||root.querySelector('.personal-preview-note');
+   if(note)note.textContent=(en?'Historical public example: ':'历史公开示例：')+(data.asOf||'—')+(en?'. Its full original preset was not saved. These values do not represent the current explicit presets.':'。原始完整预设未保存，这些数值不代表当前明确指定的预设。');
+   const method=root.querySelector('.personal-method > p');if(method)method.textContent=en?'This is the earlier weighting display, retained only as a historical example. No institution G is inferred from its weights.':'此处仅保留早期权重展示作为历史示例，不从旧权重推导机构 G。';
+   if(details&&available)for(const institution of list(sample.institutions)){
+    paragraph(details,title(institution)+' · '+(numeric(institution.papers)?institution.papers.toLocaleString():'—')+(en?' historical source papers':' 篇历史来源论文'));examples(details,institution.examples);
+   }
+  }
+  root.dataset.personalSchema=current?'current':'historical';root.dataset.personalCurrent=selectedProfile;root.dataset.paperCurrent=paper.id;
+ }
  show();
 })();

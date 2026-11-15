@@ -1,30 +1,35 @@
 <p align="right"><sub><a href="./README.md">简体中文</a> | English</sub></p>
 
-<p align="center"><img src="assets/readme-hero-en-v1.webp" width="100%" alt="KnowMe · Multidimensional paper scoring. · Personalized to your research."></p>
+<img src="assets/knowme.svg" width="40" height="40" alt="KnowMe">
 
-<p align="center"><a href="https://hackerchenzhuo.github.io/knowme-research-ai/en/">Website ↗</a> · <a href="https://hackerchenzhuo.github.io/knowme-research-ai/en/#guide">Guide</a> · <a href="https://github.com/hackerchenzhuo/knowme-research-ai/issues">Feedback</a></p>
+# KnowMe
 
-## Two tools
+Tools for choosing papers to read and translating text. This repository contains the website and user documentation.
+
+[Website](https://hackerchenzhuo.github.io/knowme-research-ai/en/) · [Guide](https://hackerchenzhuo.github.io/knowme-research-ai/en/#guide) · [Feedback](https://github.com/hackerchenzhuo/knowme-research-ai/issues)
 
 | Tool | What it does | Install |
 |---|---|---|
-| **KnowMe Paper Radar** | Multidimensional scores and reusable cache for a reading list shaped by your research | [Chrome Web Store ↗](https://chromewebstore.google.com/detail/aneomkhamcijmfmeeegocbknklflilof?hl=en) |
-| **AI Translate** | Translation within reach, with Markdown structure and your preferred terms preserved | [Chrome Web Store ↗](https://chromewebstore.google.com/detail/ggbnigoglmfkdfmjggiifmfoinncblgm?hl=en) |
+| KnowMe Paper Radar | Organize arXiv papers by research interest, inspect evidence and set reading priorities | [Chrome Web Store](https://chromewebstore.google.com/detail/aneomkhamcijmfmeeegocbknklflilof?hl=en) |
+| AI Translate | Translate selected text or use a shortcut, preserving Markdown and preferred terms | [Chrome Web Store](https://chromewebstore.google.com/detail/ggbnigoglmfkdfmjggiifmfoinncblgm?hl=en) |
 
-Free to install. AI Translate uses your own model connection; provider fees may apply.
+## Paper Radar
 
-## Your research. Your ranking.
+- Choose research topics or define arXiv categories, English keywords, date ranges and exclusions.
+- Use relevance, recency and personal preferences to plan your reading. Expand scores to inspect author and institution evidence, individual components and sources.
+- Merge duplicate records by paper ID while retaining version information. Cache, saved papers and settings stay in the selected local data source: browser storage or a connected local library.
+- View annotations for indexed papers on arXiv and Google Scholar, then follow related work.
 
-Relevance, author and institutional evidence, recency and your interests are weighted in layers to shape your reading order. Personal weights adapt as your research interests and the evidence change. [Explore scoring and the research map ↗](https://hackerchenzhuo.github.io/knowme-research-ai/en/#ranking)
+Start with 1–3 topics, run an online refresh, inspect the evidence and save papers. Cache-only mode lets you revisit saved records without another search; refresh online for new papers. Ordinary discovery and ranking require no model API key. The main workspace uses Chinese, with English topic labels and search phrases.
 
-<p align="center"><a href="https://hackerchenzhuo.github.io/knowme-research-ai/en/#experience"><img src="assets/product-tour-en.webp?v=20261024-gallery" alt="High-resolution Paper Radar interface preview across multiple public papers" width="100%"></a></p>
+## AI Translate
 
-<p align="center"><a href="https://hackerchenzhuo.github.io/knowme-research-ai/en/#experience">Explore the interface ↗</a></p>
+Select text or use a keyboard shortcut to translate it while preserving Markdown structure and your preferred terminology. Configure your own model connection after installation; provider fees may apply.
 
-<sub>Localized interface preview. Public examples do not imply author or institution endorsement.</sub>
+Both tools are free to install. Export data you want to keep before changing devices or browser profiles. See the [guide](https://hackerchenzhuo.github.io/knowme-research-ai/en/#guide) for the steps.
 
-## Help shape the tools
+## Updates
 
-Independently maintained and freely shared. Found a rough edge or have an idea? Leave a note in [Issues](https://github.com/hackerchenzhuo/knowme-research-ai/issues).
+As of November 15, 2026, Paper Radar **1.2.5 is publicly available** in the Chrome Web Store. **1.2.6 has been submitted for review**, with a fix for external records that assign the same institution list to multiple authors.
 
-[Updates](https://hackerchenzhuo.github.io/knowme-research-ai/en/#updates) · [Paper Radar privacy](https://hackerchenzhuo.github.io/knowme-research-ai/radar-privacy.html#english) · [AI Translate privacy](https://hackerchenzhuo.github.io/knowme-research-ai/privacy.html#english)
+[Changelog](./CHANGELOG.md) · [Paper Radar privacy](https://hackerchenzhuo.github.io/knowme-research-ai/radar-privacy.html#english) · [AI Translate privacy](https://hackerchenzhuo.github.io/knowme-research-ai/privacy.html#english)
