@@ -33,3 +33,12 @@
 截至 2026-11-15，论文雷达公开商店版本为 **1.2.5**；**1.2.6 已提交审核**，修复外部书目记录中重复分配作者–机构关系的问题。
 
 [更新记录](./CHANGELOG.md) · [论文雷达隐私](https://hackerchenzhuo.github.io/knowme-research-ai/radar-privacy.html) · [AI 翻译隐私](https://hackerchenzhuo.github.io/knowme-research-ai/privacy.html)
+
+
+## CLI 与研究工具接入
+
+[下载 KnowMe CLI 1.2.7（ZIP，201 KB）](https://hackerchenzhuo.github.io/knowme-research-ai/assets/knowme-cli-1.2.7.zip)。需要 **Node.js 22.13 或更新版本**，无需 npm 安装；Chrome 扩展安装不会安装终端命令。
+
+解压后可用附带的明确合成样例验证排名和 JSONL 输出。此包包含离线排名 CLI 与 JSONL 转 RAG 文档示例；不包含图导出或引用更新命令。环境要求与快速示例见[官网 CLI 说明](https://hackerchenzhuo.github.io/knowme-research-ai/en/radar/#cli)，完整操作见[英文 CLI 文档](README.en.md#local-cli)。
+
+分数用于辅助阅读顺序，应结合来源与缺失证据状态查看。常驻服务复用图的测速不能直接套用于每次新启动的 CLI。
