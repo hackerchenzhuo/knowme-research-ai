@@ -1,0 +1,47 @@
+/* Additive styles for the English research section; existing tools are unchanged. */
+.research-evidence,.research-brief{color:var(--ink,#1b2b33);scroll-margin-top:90px}
+.research-evidence{padding-block:48px 8px}
+.research-evidence-heading{max-width:800px;margin-bottom:24px}
+.research-evidence-heading h2,.research-brief h2{font-size:26px;font-weight:550;line-height:1.35;letter-spacing:-.025em;margin:9px 0 12px}
+.research-evidence-heading>p:last-child,.research-brief p:not(.eyebrow){font-size:14px;line-height:1.85;color:#617785;margin:0}
+.research-evidence strong,.research-brief strong{font-weight:550;color:#35546a}
+.research-measures{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.research-measure{padding:22px 21px 19px;border:1px solid #dce6ed;border-radius:8px;background:#f2f6fa;min-width:0}
+.research-measure h3{font-size:14px;font-weight:550;line-height:1.5;margin:0;color:#3a566a}
+.research-measure .research-value{font-size:29px;font-weight:500;letter-spacing:-.025em;line-height:1.25;color:#456d8f;margin:15px 0 12px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.research-value span{font-size:.72em;font-weight:400}
+.research-measure>p:not(.research-value){font-size:13px;line-height:1.75;margin:0;color:#526a7b}
+.research-measure>p.research-scope{font-size:11px;line-height:1.75;color:#728491;margin-top:14px;padding-top:12px;border-top:1px solid #dce6ed}
+.research-methods,.research-system{border-bottom:1px solid #dfe7ec}
+.research-methods{margin-top:20px}
+.research-methods summary,.research-system summary{font-size:13px;line-height:1.7;font-weight:500;color:#44657c;cursor:pointer;padding:15px 0;list-style:revert}
+.research-methods summary:focus-visible,.research-system summary:focus-visible,.research-system-scroll:focus-visible{outline:2px solid #7095b2;outline-offset:5px;border-radius:2px}
+.research-methods>div{padding:0 0 12px;max-width:950px}
+.research-methods p{font-size:12px;line-height:1.85;color:#617785;margin:0 0 12px}
+.research-handoff{display:flex;align-items:center;justify-content:space-between;gap:28px;padding:28px 0 14px}
+.research-handoff>div{max-width:760px}
+.research-handoff h3{font-size:16px;font-weight:550;line-height:1.5;margin:0 0 8px}
+.research-handoff p{font-size:13px;line-height:1.85;color:#617785;margin:0}
+.research-handoff>.text-link{flex:0 0 auto;color:#456d8f}
+.research-system figure{margin:0 0 20px;padding:16px;border:1px solid #dfe7ec;border-radius:8px;background:#fff}
+.research-system-scroll{overflow-x:auto;overscroll-behavior-inline:contain;-webkit-overflow-scrolling:touch}
+.research-system img{display:block;width:100%;min-width:740px;height:auto}
+.research-system figcaption{font-size:12px;line-height:1.8;color:#6b7e8d;margin-top:14px}
+.research-system figcaption a{color:#456d8f;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+.research-brief{display:flex;align-items:center;justify-content:space-between;gap:36px;margin-top:45px;padding:25px 28px;border:1px solid #dce6ed;border-radius:8px;background:#f2f6fa}
+.research-brief>div{max-width:770px}
+.research-brief h2{font-size:23px;margin-bottom:9px}
+.research-brief>.text-link{flex:0 0 auto;color:#456d8f;font-size:12px}
+@media(max-width:1000px){.research-measures{gap:12px}.research-measure{padding:19px 16px}.research-measure .research-value{font-size:25px}.research-handoff,.research-brief{align-items:flex-start;flex-direction:column;gap:16px}.research-brief>.text-link{font-size:12px}}
+@media(max-width:700px){.research-evidence{padding-top:34px}.research-evidence-heading h2{font-size:24px}.research-evidence-heading>p:last-child{font-size:13px}.research-measures{grid-template-columns:1fr;gap:12px}.research-measure{padding:20px}.research-measure .research-value{font-size:28px;margin:10px 0}.research-measure>p.research-scope{margin-top:12px}.research-handoff{padding-top:23px}.research-system figure{padding:10px}.research-brief{margin-top:32px;padding:22px}.research-brief h2{font-size:22px}.research-brief p:not(.eyebrow){font-size:13px}}
+
+/* Append after the existing research-evidence-v54.css rules. */
+.research-cli-availability,.research-cli-note{font-size:13px;line-height:1.85;color:#617785;margin:0 0 17px;max-width:920px}
+.research-cli-availability{padding:13px 16px;background:#f2f6fa;border-left:2px solid #9bb5ca;border-radius:3px}
+.research-cli-command{max-width:100%;overflow-x:auto;white-space:pre;padding:17px 19px;margin:16px 0;border:1px solid #dce6ed;border-radius:7px;background:#f7f9fc;color:#35546a;font:12px/1.8 var(--mono,ui-monospace,monospace);tab-size:2}
+.research-cli-command code{font:inherit;white-space:inherit;background:none;padding:0}
+.research-cli p code{font:11px/1.7 var(--mono,ui-monospace,monospace);color:#456d8f;overflow-wrap:anywhere}
+.research-cli .research-handoff p+p{margin-top:12px}
+@media(max-width:700px){.research-cli-command{font-size:11px;padding:14px}.research-cli-availability,.research-cli-note{font-size:12px}}
+
+.research-cli-availability .button{font-size:12px;min-height:40px;padding:10px 15px;gap:20px}.research-cli-availability p{margin:10px 0 0;font-size:12px;line-height:1.7;color:#617785}
