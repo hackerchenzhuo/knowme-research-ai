@@ -23,6 +23,7 @@
   <link rel="icon" type="image/svg+xml" href="../../assets/knowme.svg">
   <link rel="stylesheet" href="../../style.css?v=20261109-brand-blue">
   <script src="../../app.js?v=20261115-radar126" defer></script>
+  <link rel="stylesheet" href="../../assets/research-evidence-v54.css">
 </head>
 <body class="product-landing" data-product="radar">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -160,6 +161,110 @@ Illustrative reading checklist. Open each source for the complete paper.
 
 
 
+
+
+        <!-- knowme-research-evidence-v54:start -->
+    <section class="research-evidence shell" id="research-evidence" aria-labelledby="research-evidence-title">
+      <div class="research-evidence-heading">
+        <p class="eyebrow">PAPER RADAR / SELECTED EXPERIMENTS</p>
+        <h2 id="research-evidence-title">Research behind the tool</h2>
+        <p>Measurements on a snapshot of <strong>174,640 acquired records</strong> inform two choices in Paper Radar: keep abstracts with their sources, and reuse the source graph when reading priorities change.</p>
+      </div>
+      <div class="research-measures">
+        <article class="research-measure" aria-labelledby="research-coverage-title">
+          <h3 id="research-coverage-title">Coverage from abstracts</h3>
+          <p class="research-value">64.5<span>%</span></p>
+          <p>Of the focused topic-matched cohort, 37,495 of 58,094 papers had no matching title signal.</p>
+          <p class="research-scope">Lexical topic matching · 16 LLM-related directions · thirteen months</p>
+        </article>
+        <article class="research-measure" aria-labelledby="research-retrieval-title">
+          <h3 id="research-retrieval-title">External retrieval relevance</h3>
+          <p class="research-value">0.412 <span aria-label="to">→</span> 0.598</p>
+          <p>NDCG@10 for titles alone versus titles plus abstracts, using the same fixed relevance scorer.</p>
+          <p class="research-scope">CSFCube · 50 retrieval tasks · 6,242 expert-judged pairs · Qwen3.8-27B</p>
+        </article>
+        <article class="research-measure" aria-labelledby="research-reuse-title">
+          <h3 id="research-reuse-title">Retained-graph preparation</h3>
+          <p class="research-value">3.03–3.64<span>×</span></p>
+          <p>Faster response preparation with a retained source graph, for 1,000 returned papers per request.</p>
+          <p class="research-scope">Elapsed response time (s) · six directions · three paired runs per direction</p>
+        </article>
+      </div>
+      <details class="research-methods">
+        <summary>Populations and measurement conditions</summary>
+        <div>
+          <p><strong>Library.</strong> The acquisition through 3 November 2026 contains 174,640 unique in-scope paper identifiers, with versions and cross-listings merged.</p>
+          <p><strong>Coverage.</strong> The same direction definitions admit 20,599 papers from titles and 58,094 from titles plus cached abstracts. The 64.5% is calculated within this focused cohort.</p>
+          <p><strong>Retrieval.</strong> The external CSFCube benchmark contains 34 distinct query papers across 50 query–facet tasks. The model, prompts and candidate pools stay fixed; expert grades are withheld from scoring. This evaluates the information supplied to a fixed relevance scorer.</p>
+          <p><strong>Preparation.</strong> Mean fresh-source times span 151.04–168.27 seconds; retained-graph times span 41.77–55.47 seconds. Ratios compare unrounded means within each direction. All 18 matched pairs return identical scores and source bindings; the target direction is uncached in both modes.</p>
+          <p>Preparation timing covers the native response call through complete serialization from loaded inputs, on an Intel Xeon Platinum 8369B CPU host with 800 GiB memory and Node.js v26.4.0. Initial loading and worker setup are excluded. These timings apply to retained state in a persistent local service; independent CLI processes prepare their own contexts.</p>
+        </div>
+      </details>
+      <div class="research-handoff">
+        <div>
+          <h3>Inspect in the browser. Reuse through the CLI.</h3>
+          <p>The browser makes the reading list and its supporting evidence inspectable. A local command-line interface returns JSON or JSONL with source identifiers, abstracts, score components and missing-evidence states for downstream tools.</p>
+        </div>
+        <a class="text-link" href="../#research-atlas">Explore the public Research Atlas <span aria-hidden="true">↗</span></a>
+      </div>
+      <details class="research-system">
+        <summary>System view: from a reading profile to shared evidence</summary>
+        <figure>
+          <div class="research-system-scroll" tabindex="0" role="region" aria-label="Paper Radar system diagram; scroll horizontally on smaller screens">
+            <img src="../../assets/research-radar-system-v54.svg" width="936" height="648" loading="lazy" decoding="async" alt="Four-column Paper Radar architecture: profile and canonical sources feed typed author–paper evidence; author and institution context feed a shared engine with source and context caches, browser output and JSONL output. A return loop reuses versioned sources and profile fingerprints.">
+          </div>
+          <figcaption>Source and context caches support the browser and structured agent outputs. The public atlas retains a separate fixed snapshot. <a href="../../assets/research-radar-system-v54.svg" target="_blank" rel="noopener noreferrer">Open the full diagram <span aria-hidden="true">↗</span></a></figcaption>
+        </figure>
+      </details>
+    </section>
+    <!-- knowme-research-evidence-v54:end -->
+
+<!-- knowme-cli-docs:start -->
+<section class="research-evidence research-cli shell" id="cli" aria-labelledby="cli-title">
+  <div class="research-evidence-heading">
+    <p class="eyebrow">PAPER RADAR / LOCAL CLI</p>
+    <h2 id="cli-title">Use paper evidence in your own tools</h2>
+    <p>Rank supplied metadata and export JSONL for a reading assistant, retrieval pipeline or research agent. The toolkit requires <strong>Node.js 22.13 or newer</strong>, with no npm installation. It is separate from the Chrome extension.</p>
+  </div>
+  <div class="research-cli-availability">
+    <a class="button primary" href="../../assets/knowme-cli-1.2.7.zip" download>Download CLI 1.2.7 (.zip) <span aria-hidden="true">↓</span></a>
+    <p>201 KB · Offline ranking + JSONL conversion · No model key required</p>
+  </div>
+  <p class="research-cli-note">Extract the ZIP and open a terminal in its <code>knowme-cli-1.2.7</code> folder. The included three-paper example is <strong>synthetic interface data</strong>, not a research result.</p>
+  <pre class="research-cli-command"><code>node scripts/rank-research-papers.mjs --list-topics
+
+node scripts/rank-research-papers.mjs \
+  --input examples/frozen-papers.json --profile examples/profile.json \
+  --from 2026-09-01 --to 2026-09-30 \
+  --exclude survey --limit 20 --format jsonl &gt; ranked.jsonl
+
+node examples/jsonl-to-rag.mjs \
+  ranked.jsonl rag-documents.jsonl selected-ids.json</code></pre>
+  <p class="research-cli-note">JSONL begins with a <code>manifest</code>, followed by <code>paper</code> records using schema <code>knowme-ranked-evidence-v1</code>. Installing the Chrome extension does not install these terminal commands. Graph export and citation refresh are not included in this download.</p>
+  <details class="research-methods">
+    <summary>Use your own records, profile or stdin</summary>
+    <div>
+      <p>Replace the synthetic example with <code>{"records":[{"paper":{...}}]}</code>. Each paper carries its ID, title, abstract in <code>summary</code>, author list, dates and categories. Supply your complete relevant bibliography: the date window selects candidates while context uses all supplied records.</p>
+      <p>Use <code>--profile profile.json</code> with <code>{"name":"My research","topics":{"rag":1,"reasoning":2}}</code>, or use <code>--topics rag:1,reasoning:2</code> instead. Priority 1 is highest and 4 is lowest. <code>--exclude</code> matches literal title/abstract text and can be repeated.</p>
+      <p><code>--input -</code> accepts the same JSON via stdin. Check the process exit status, parse stdout and retain stderr for diagnostics. Keep the returned <code>snapshotId</code> with downstream documents. The ZIP's README contains the complete flag and output reference.</p>
+    </div>
+  </details>
+  <details class="research-methods">
+    <summary>Package checksum and verification</summary>
+    <div>
+      <p>SHA-256: <code>938dbcff7ddc508bf8305c30bce24cf5b73760f5b8e87cf4e399eb99bcb00a3c</code></p>
+      <p>The extracted package was checked with Node.js v26.4.0 using the included synthetic input. File, stdin and inline-topic results matched the current source implementation at the same clock; the check made no network or database calls. The package manifest lists its files and source provenance.</p>
+    </div>
+  </details>
+  <div class="research-handoff">
+    <div>
+      <h3>Read the score with its evidence</h3>
+      <p>Scores express reading priority under the selected profile and supplied records. Inspect the abstracts and supporting sources to decide how a paper informs your research.</p>
+      <p>Each fresh CLI process prepares its own context. The retained-graph speedup above applies to a persistent local service; a small output limit does not remove preparation work.</p>
+    </div>
+  </div>
+</section>
+<!-- knowme-cli-docs:end -->
 
 
     <section class="guide-section shell" id="guide" aria-labelledby="guide-title"><div class="section-heading"><div><p class="eyebrow">GET STARTED</p><h2 id="guide-title">Start here.</h2></div><p>Install. Set up. Start reading.<br>Find answers as you go.</p></div><div class="guide-grid"><div class="quick-start"><div><span>1</span><p><strong>Install from the store</strong><span>Pin Paper Radar to the toolbar for easy access.</span></p></div><div><span>2</span><p><strong>Choose your interests</strong><span>Start with 1–3 topics and run an online refresh.</span></p></div><div><span>3</span><p><strong>Inspect and save</strong><span>Explore scores and author evidence, then save papers worth reading.</span></p></div></div><div class="faq-list"><details><summary>How do I build my first paper cache?<span aria-hidden="true">+</span></summary><p>Choose your topics and run an online refresh. Then use cache-only mode to revisit the same date range and filters. Cache-only mode does not contact arXiv; refresh online for the latest papers.</p></details>
