@@ -30,7 +30,7 @@
 
 ## 更新
 
-截至 2026-11-15，论文雷达公开商店版本为 **1.2.5**；**1.2.6 已提交审核**，修复外部书目记录中重复分配作者–机构关系的问题。
+截至 2026-11-18，论文雷达 **1.2.6 已在 Chrome 商店发布**；**1.2.7 已提交审核**，进一步更新机构证据归属、方向上下文与评分说明。独立 CLI 1.2.7 已可从官网下载，具体用法见下方文档。
 
 [更新记录](./CHANGELOG.md) · [论文雷达隐私](https://hackerchenzhuo.github.io/knowme-research-ai/radar-privacy.html) · [AI 翻译隐私](https://hackerchenzhuo.github.io/knowme-research-ai/privacy.html)
 

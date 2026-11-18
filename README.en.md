@@ -30,7 +30,7 @@ Both tools are free to install. Export data you want to keep before changing dev
 
 ## Updates
 
-As of November 15, 2026, Paper Radar **1.2.5 is publicly available** in the Chrome Web Store. **1.2.6 has been submitted for review**, with a fix for external records that assign the same institution list to multiple authors.
+As of November 18, 2026, Paper Radar **1.2.6 is publicly available** in the Chrome Web Store. **1.2.7 has been submitted for review**, with updated institution attribution, direction-specific context and score explanations. The separate CLI 1.2.7 toolkit is available below.
 
 [Changelog](./CHANGELOG.md) · [Paper Radar privacy](https://hackerchenzhuo.github.io/knowme-research-ai/radar-privacy.html#english) · [AI Translate privacy](https://hackerchenzhuo.github.io/knowme-research-ai/privacy.html#english)
 
