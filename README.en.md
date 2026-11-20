@@ -1,8 +1,10 @@
 <p align="right"><sub>English · <a href="./README.zh-CN.md">简体中文</a></sub></p>
 
-<h1 align="center"><img src="./assets/radar.png" width="46" height="46" align="middle" alt=""> KnowMe Paper Radar</h1>
+<p align="center"><img src="./assets/radar.png" width="72" height="72" alt="Paper Radar logo"></p>
 
-<p align="center">Find recent arXiv papers for your research question and inspect the evidence behind their reading priority.</p>
+<h1 align="center">KnowMe Paper Radar</h1>
+
+<p align="center">A reading list for your research, with a trail back to the papers behind it.</p>
 
 <p align="center">
   <a href="https://arxiv.org/pdf/2611.23702"><img src="https://img.shields.io/badge/Paper-PDF-b31b1b.svg" alt="Read the paper (PDF)"></a>
@@ -13,9 +15,9 @@
   <a href="./CLI.md"><img src="https://img.shields.io/badge/CLI-Guide-6C757D.svg" alt="Read the CLI guide"></a>
 </p>
 
-<a href="https://hackerchenzhuo.github.io/knowme-research-ai/en/radar/"><img src="./assets/radar-reading-walkthrough.gif" width="100%" alt="Scroll a three-paper subscription in Paper Radar, expand a paper’s scoring evidence, and follow a coauthorship link from the atlas to arXiv."></a>
+<a href="https://hackerchenzhuo.github.io/knowme-research-ai/en/radar/"><img src="./assets/radar-reading-english-20261121.gif" width="100%" alt="English reading preview: scroll three cached public papers, expand the score evidence, and follow the public atlas to an original arXiv source."></a>
 
-The recording follows three public papers through the subscription view. Scroll the reading list, open a score to inspect its sources, then follow *When Agents Slow Down* from the research atlas to its arXiv abstract. [Try the atlas](https://hackerchenzhuo.github.io/knowme-research-ai/en/#research-atlas)
+An English-interface preview with three public cached papers: scroll the subscription list, inspect the score breakdown, then follow *When Agents Slow Down* through the separate public atlas to its arXiv abstract. [Try the atlas](https://hackerchenzhuo.github.io/knowme-research-ai/en/#research-atlas)
 
 ## <img src="./assets/radar-mark-method.svg" alt="" height="19"> How paper selection works
 
