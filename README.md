@@ -5,23 +5,29 @@
 <p align="center">Find recent arXiv papers for your research question and inspect the evidence behind their reading priority.</p>
 
 <p align="center">
-  <a href="https://arxiv.org/abs/2611.23702"><strong>Paper</strong></a>
-  &nbsp;·&nbsp; <a href="https://hackerchenzhuo.github.io/knowme-research-ai/en/#research-atlas"><strong>Interactive atlas</strong></a>
-  &nbsp;·&nbsp; <a href="https://chromewebstore.google.com/detail/aneomkhamcijmfmeeegocbknklflilof?hl=en"><strong>Install for Chrome</strong></a>
-  &nbsp;·&nbsp; <a href="./CLI.md"><strong>CLI guide</strong></a>
+  <a href="https://arxiv.org/abs/2611.23702"><img src="./assets/radar-link-paper.svg" alt="Read the paper" height="29"></a>
+  <a href="https://hackerchenzhuo.github.io/knowme-research-ai/en/#research-atlas"><img src="./assets/radar-link-atlas.svg" alt="Interactive atlas" height="29"></a>
+  <a href="https://chromewebstore.google.com/detail/aneomkhamcijmfmeeegocbknklflilof?hl=en"><img src="./assets/radar-link-chrome.svg" alt="Install for Chrome" height="29"></a>
+  <a href="./CLI.md"><img src="./assets/radar-link-cli.svg" alt="CLI guide" height="29"></a>
 </p>
 
-<a href="https://hackerchenzhuo.github.io/knowme-research-ai/en/#research-atlas"><img src="./assets/paper-radar-atlas.png" width="100%" alt="The public research atlas highlights two coauthors linked through When Agents Slow Down, arXiv:2609.15309."></a>
+<a href="https://hackerchenzhuo.github.io/knowme-research-ai/en/#research-atlas"><img src="./assets/radar-source-walkthrough.gif" width="100%" alt="Screen recording of the public atlas. Follow a coauthorship link, inspect the evidence for When Agents Slow Down, and open the paper on arXiv."></a>
 
-The atlas links authors through papers they wrote together. Open the example above to explore the public graph, follow a paper to its coauthors, and open the source record.
+Follow a coauthorship link to *When Agents Slow Down*, inspect the evidence on its paper card, then open the original abstract. [Explore the atlas](https://hackerchenzhuo.github.io/knowme-research-ai/en/#research-atlas) · [Still image](./assets/paper-radar-atlas.png)
 
-## How paper selection works
+## <img src="./assets/radar-mark-method.svg" alt="" height="19"> How paper selection works
 
 A search for *agent memory* can turn up papers that mention memory in passing and papers that introduce a memory mechanism. Paper Radar starts with the topics you choose, their priorities, a date window and any terms you want to exclude. It ranks matching papers using their titles and abstracts, publication age, and available evidence about the authors’ earlier work and institutional affiliations.
 
-Open a result to see which topics matched and which records contributed to its score. The browser keeps the paper, its version and the supporting links together. As your interests change, you can reuse the cached library under a different profile. Ordinary ranking runs locally without a model API key.
+The base score accounts for matched topics, recency and catalogue evidence. The personal score also reflects the authors’ fit to your reading profile ($\Delta_a$), the institution’s activity in that area ($G$) and any adjustment you set ($\Delta_m$).
 
-## Try the browser extension
+$$
+s(p,u,t) = s_{\mathrm{base}}(p,u,t) + \Delta_a(p,u,t) + G(p,u,t) + \Delta_m(p,u)
+$$
+
+Expand the score to inspect the papers and affiliations behind each term. Switching profiles reuses the same local library. Daily ranking needs no model API key.
+
+## <img src="./assets/radar-mark-guide.svg" alt="" height="19"> Try the browser extension
 
 1. [Install Paper Radar](https://chromewebstore.google.com/detail/aneomkhamcijmfmeeegocbknklflilof?hl=en) and select a few topics or enter your own search terms.
 2. Choose a date window and refresh from arXiv. Open a result’s score breakdown to inspect the matching evidence.
@@ -51,7 +57,7 @@ node scripts/rank-research-papers.mjs \
 
 The [full CLI guide](./CLI.md) covers installation, input formats, profile settings, and reading the output in another research tool.
 
-## Research
+## <img src="./assets/radar-mark-results.svg" alt="" height="19"> Research
 
 The study follows 174,640 acquired records. Across 58,094 papers matched to sixteen language-model research directions, 64.5% matched through the abstract alone. On fifty expert-judged retrieval tasks, supplying abstracts to the same frozen reranker raised normalized discounted cumulative gain at rank 10 from 0.412 to 0.598. These experiments explain why the tool caches abstracts alongside titles. [Evaluation and system figures](https://hackerchenzhuo.github.io/knowme-research-ai/en/radar/#research-evidence)
 
