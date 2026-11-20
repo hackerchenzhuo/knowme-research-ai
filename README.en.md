@@ -1,4 +1,4 @@
-<p align="right"><sub><a href="./README.md">简体中文</a> | English</sub></p>
+<p align="right"><sub>English | <a href="./README.zh-CN.md">简体中文</a></sub></p>
 
 <img src="assets/knowme.svg" width="40" height="40" alt="KnowMe">
 

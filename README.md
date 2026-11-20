@@ -1,44 +1,162 @@
-<p align="right"><sub>简体中文 | <a href="./README.en.md">English</a></sub></p>
+<p align="right"><sub>English | <a href="./README.zh-CN.md">简体中文</a></sub></p>
 
-<img src="assets/knowme.svg" width="40" height="40" alt="知我">
+<img src="assets/knowme.svg" width="40" height="40" alt="KnowMe">
 
-# 知我 · KnowMe
+# KnowMe
 
-论文选读与翻译工具。本仓库维护官网和使用文档。
+Tools for choosing papers to read and translating text. This repository contains the website, user documentation and a precompiled local ranking toolkit.
 
-[官网](https://hackerchenzhuo.github.io/knowme-research-ai/) · [使用指南](https://hackerchenzhuo.github.io/knowme-research-ai/#guide) · [反馈与建议](https://github.com/hackerchenzhuo/knowme-research-ai/issues)
+[Website](https://hackerchenzhuo.github.io/knowme-research-ai/en/) · [Guide](https://hackerchenzhuo.github.io/knowme-research-ai/en/#guide) · [Feedback](https://github.com/hackerchenzhuo/knowme-research-ai/issues)
 
-| 工具 | 用途 | 安装 |
+| Tool | What it does | Install |
 |---|---|---|
-| 知我论文雷达 | 按研究方向整理 arXiv 论文，查看证据，安排阅读优先级 | [Chrome 商店](https://chromewebstore.google.com/detail/aneomkhamcijmfmeeegocbknklflilof) |
-| AI 翻译 | 划词或快捷唤起翻译，保留 Markdown 结构与个人译法 | [Chrome 商店](https://chromewebstore.google.com/detail/ggbnigoglmfkdfmjggiifmfoinncblgm) |
+| KnowMe Paper Radar | Organize arXiv papers by research interest, inspect evidence and set reading priorities | [Chrome Web Store](https://chromewebstore.google.com/detail/aneomkhamcijmfmeeegocbknklflilof?hl=en) |
+| AI Translate | Translate selected text or use a shortcut, preserving Markdown and preferred terms | [Chrome Web Store](https://chromewebstore.google.com/detail/ggbnigoglmfkdfmjggiifmfoinncblgm?hl=en) |
 
-## 论文雷达
+## Paper Radar
 
-- 选择研究专题，或自定义 arXiv 类目、英文关键词、日期范围和排除项。
-- 结合相关性、时效与个人偏好安排选读顺序，展开查看作者与机构线索、评分构成和来源。
-- 按论文标识合并重复记录，保留版本信息；检索缓存、收藏与设置保存在所选本地数据源：浏览器存储，或已连接的本地论文库。
-- 在 arXiv 和 Google Scholar 页面查看已收录论文的标注，继续查找相关工作。
+- Choose research topics or define arXiv categories, English keywords, date ranges and exclusions.
+- Use relevance, recency and personal preferences to plan your reading. Expand scores to inspect author and institution evidence, individual components and sources.
+- Merge duplicate records by paper ID while retaining version information. Cache, saved papers and settings stay in the selected local data source: browser storage or a connected local library.
+- View annotations for indexed papers on arXiv and Google Scholar, then follow related work.
 
-首次使用可先选 1–3 个专题，执行一次联网更新，再查看证据并收藏。之后可用「仅用缓存」重复筛选已保存的资料；获取新论文时再联网更新。常规检索与排序无需模型 API Key。
+Start with 1–3 topics, run an online refresh, inspect the evidence and save papers. Cache-only mode lets you revisit saved records without another search; refresh online for new papers. Ordinary discovery and ranking require no model API key. The main workspace uses Chinese, with English topic labels and search phrases.
 
-## AI 翻译
+## AI Translate
 
-选中文字或使用快捷键唤起翻译，保留 Markdown 结构，并沿用个人术语与译法。安装后配置自己的模型连接即可使用；模型服务可能计费。
+Select text or use a keyboard shortcut to translate it while preserving Markdown structure and your preferred terminology. Configure your own model connection after installation; provider fees may apply.
 
-两款工具均可免费安装。更换设备或浏览器前，可先导出需要保留的数据；具体操作见[使用指南](https://hackerchenzhuo.github.io/knowme-research-ai/#guide)。
+Both tools are free to install. Export data you want to keep before changing devices or browser profiles. See the [guide](https://hackerchenzhuo.github.io/knowme-research-ai/en/#guide) for the steps.
 
-## 更新
+## Updates
 
-截至 2026-11-18，论文雷达 **1.2.6 已在 Chrome 商店发布**；**1.2.7 已提交审核**，进一步更新机构证据归属、方向上下文与评分说明。独立 CLI 1.2.7 已可从官网下载，具体用法见下方文档。
+As of November 18, 2026, Paper Radar **1.2.6 is publicly available** in the Chrome Web Store. **1.2.7 has been submitted for review**, with updated institution attribution, direction-specific context and score explanations. The separate CLI 1.2.7 toolkit is available below.
 
-[更新记录](./CHANGELOG.md) · [论文雷达隐私](https://hackerchenzhuo.github.io/knowme-research-ai/radar-privacy.html) · [AI 翻译隐私](https://hackerchenzhuo.github.io/knowme-research-ai/privacy.html)
+[Changelog](./CHANGELOG.md) · [Paper Radar privacy](https://hackerchenzhuo.github.io/knowme-research-ai/radar-privacy.html#english) · [AI Translate privacy](https://hackerchenzhuo.github.io/knowme-research-ai/privacy.html#english)
 
 
-## CLI 与研究工具接入
+## Local CLI
 
-[下载 KnowMe CLI 1.2.7（ZIP，201 KB）](https://hackerchenzhuo.github.io/knowme-research-ai/assets/knowme-cli-1.2.7.zip)。需要 **Node.js 22.13 或更新版本**，无需 npm 安装；Chrome 扩展安装不会安装终端命令。
+Offline paper ranking and source-linked JSON/JSONL for your own tools.
 
-解压后可用附带的明确合成样例验证排名和 JSONL 输出。此包包含离线排名 CLI 与 JSONL 转 RAG 文档示例；不包含图导出或引用更新命令。环境要求与快速示例见[官网 CLI 说明](https://hackerchenzhuo.github.io/knowme-research-ai/en/radar/#cli)，完整操作见[英文 CLI 文档](README.en.md#local-cli)。
+[Download KnowMe CLI 1.2.7 (.zip, 201 KB)](https://hackerchenzhuo.github.io/knowme-research-ai/assets/knowme-cli-1.2.7.zip)
 
-分数用于辅助阅读顺序，应结合来源与缺失证据状态查看。常驻服务复用图的测速不能直接套用于每次新启动的 CLI。
+SHA-256: `938dbcff7ddc508bf8305c30bce24cf5b73760f5b8e87cf4e399eb99bcb00a3c`
+
+**Requirements:** Node.js **22.13.0 or newer**. This package contains precompiled product logic and needs **no npm install**, model key or network connection for ranking. Installing the Chrome extension does not install this separate terminal toolkit.
+
+This download includes the ranking CLI and a JSONL-to-RAG example. **The graph-export CLI and citation-refresh commands are not included in this package.**
+
+### 1. Extract and check
+
+Extract `knowme-cli-1.2.7.zip` with your archive utility, then open a terminal in the extracted `knowme-cli-1.2.7` directory. On macOS/Linux:
+
+```sh
+unzip knowme-cli-1.2.7.zip
+cd knowme-cli-1.2.7
+node --version
+node scripts/rank-research-papers.mjs --help
+node scripts/rank-research-papers.mjs --list-topics > topics.json
+```
+
+Use the actual IDs printed by `--list-topics`, such as `agent-harness`, `rag` and `reasoning`. Priorities range from **1 (highest)** to **4 (lowest)**. Topic terms come from the current product catalogue.
+
+### 2. Run the included synthetic example
+
+The three records in `examples/frozen-papers.json` are explicitly synthetic interface fixtures. Their identifiers are not claims about real arXiv papers.
+
+```sh
+node scripts/rank-research-papers.mjs \
+  --input examples/frozen-papers.json --profile examples/profile.json \
+  --from 2026-09-01 --to 2026-09-30 \
+  --exclude survey --limit 20 --format jsonl > ranked.jsonl
+```
+
+The example profile is:
+
+```json
+{
+  "name": "Agent research",
+  "topics": {"reasoning": 1, "agent-harness": 2}
+}
+```
+
+The same JSON input can come from stdin:
+
+```sh
+cat examples/frozen-papers.json | node scripts/rank-research-papers.mjs \
+  --input - --profile examples/profile.json \
+  --from 2026-09-01 --to 2026-09-30 \
+  --exclude survey --limit 20 --format jsonl > ranked-stdin.jsonl
+```
+
+For a shorter profile, use `--topics` **instead of** `--profile`:
+
+```sh
+node scripts/rank-research-papers.mjs \
+  --input papers.json --topics rag:1,reasoning:2 \
+  --from 2026-10-01 --to 2026-10-31 \
+  --exclude survey --limit 20 --format json > ranked.json
+```
+
+The last command expects your own `papers.json`.
+
+### 3. Supply real metadata
+
+The input shape is `{"records":[{"paper":{...}}]}`. Each paper should contain a canonical `id`, `title`, `summary` (abstract), `authors` array, valid `published`/`firstSubmittedAt` date, and `categories`. Optional source fields include `version`, `updated`, verified affiliation evidence and metadata verification. The included JSON is a complete shape example; replace its synthetic content with genuine source records for research use.
+
+The date window selects candidates using `firstSubmittedAt`, otherwise `published`, with inclusive UTC endpoints. Personal context uses the **complete supplied bibliography**, including current candidates. Filtering dates does not reconstruct an as-available historical snapshot. Provide only identity/affiliation evidence you actually possess.
+
+`--exclude` is a repeatable case-insensitive literal substring filter over titles and abstracts. All eligible papers are ranked before the output limit is applied. An empty selection is valid and returns a manifest with zero paper records.
+
+| Flag | Meaning |
+| --- | --- |
+| `--list-topics` | Print valid topic IDs and names. |
+| `--topics id:priority,...` | Explicit topic priorities; use this or `--profile`. |
+| `--profile FILE.json` | Object with `topics` and optional `name`. |
+| `--from`, `--to` | Required inclusive dates in `YYYY-MM-DD` form. |
+| `--input FILE.json` / `--input -` | JSON file or stdin. |
+| `--database PATH` | Compatible Paper Radar SQLite library, opened read-only; mutually exclusive with `--input`. |
+| `--exclude TEXT` | Repeatable literal title/abstract exclusion. |
+| `--limit N` | Positive returned-paper limit, default 20. |
+| `--format json` / `--format jsonl` | Output format, default JSON. |
+
+With neither `--input` nor `--database`, the original CLI behavior attempts the existing macOS library at `~/Library/Application Support/PaperRadar/paper-radar.sqlite`. This package contains no database. Explicit `--input` is the portable starting point. Ranking does not acquire new papers or load private browser preferences/manual author bonuses.
+
+### 4. Consume the output
+
+Schema: **`knowme-ranked-evidence-v1`**.
+
+- JSON is one object with `manifest` and `papers`.
+- JSONL starts with `type: "manifest"`, followed by ranked `type: "paper"` records.
+- The manifest records source/profile/code digests, snapshot time, scope, model versions and input/eligible/returned counts.
+- Each paper includes its ID/version/rank, title, abstract, authors, source URL, `snapshotId`, score components, matched evidence, missing-evidence states and provenance.
+- Scores include `base`, `personalAuthorAdjustment`, `personalInstitutionAdjustment`, `total` and Base `components`. The institution adjustment is the native paper-level aggregate; do not substitute a sum of institution display values.
+
+Check the process exit code before consuming stdout. Ranking errors are structured JSON on stderr and set a nonzero status. Keep stderr for diagnostics and retain the manifest with downstream documents.
+
+Create source-linked retrieval documents without extra dependencies:
+
+```sh
+node examples/jsonl-to-rag.mjs \
+  ranked.jsonl rag-documents.jsonl selected-ids.json
+```
+
+The converter writes `id`, `title`, `text`, `source` and `snapshotId` for each selected paper, plus a separate ID array. It performs no ranking, model call or network request. These records can feed your own retrieval or planning tool. Selection scores do not provide factual training labels or source-reuse permissions.
+
+### 5. Interpret scores and runtime correctly
+
+Scores express a deterministic reading priority under the profile and available records. They are not calibrated probabilities of paper quality, factual correctness or future citations. A neutral contribution can reflect missing evidence. Inspect the abstract, original source, score components and `missing`/`evidence` fields before making a research decision.
+
+A fresh CLI process prepares its own graph/context. The reported 3.03–3.64× retained-graph preparation speedup applies to a **persistent local service with loaded inputs**, not a guarantee for a fresh command. The output limit bounds returned records rather than preparation work.
+
+### 6. Package contents and provenance
+
+- `scripts/rank-research-papers.mjs`: original CLI/profile/ranking functions with a precompiled-module loader.
+- `runtime/ranking-core.mjs`: precompiled current product scoring/profile/author/institution logic.
+- `runtime/io-core.mjs`: original read-only input path and record normalization, compiled without graph/network refresh entry points.
+- `runtime/source-provenance.json`: real original source paths/hashes and the core-bundle hash, emitted through the unchanged output contract.
+- `examples/`: synthetic records, a profile, and the JSONL conversion example.
+- `MANIFEST.json`: version, file hashes, runtime requirement and distribution scope.
+
+The archive contains no private paper library, browser preferences, credentials, operational directories or remote-agent scripts. It installs no service or background process. Graph export, citation refresh and an MCP server are outside this download.
