@@ -5,15 +5,17 @@
 <p align="center">Find recent arXiv papers for your research question and inspect the evidence behind their reading priority.</p>
 
 <p align="center">
-  <a href="https://arxiv.org/abs/2611.23702"><img src="./assets/radar-link-paper.svg" alt="Read the paper" height="29"></a>
-  <a href="https://hackerchenzhuo.github.io/knowme-research-ai/en/#research-atlas"><img src="./assets/radar-link-atlas.svg" alt="Interactive atlas" height="29"></a>
-  <a href="https://chromewebstore.google.com/detail/aneomkhamcijmfmeeegocbknklflilof?hl=en"><img src="./assets/radar-link-chrome.svg" alt="Install for Chrome" height="29"></a>
-  <a href="./CLI.md"><img src="./assets/radar-link-cli.svg" alt="CLI guide" height="29"></a>
+  <a href="https://arxiv.org/pdf/2611.23702"><img src="https://img.shields.io/badge/Paper-PDF-b31b1b.svg" alt="Read the paper (PDF)"></a>
+  <a href="https://hackerchenzhuo.github.io/knowme-research-ai/en/radar/"><img src="https://img.shields.io/badge/Website-KnowMe-287DB1.svg" alt="Project website"></a>
+  <a href="https://github.com/hackerchenzhuo/knowme-research-ai/stargazers"><img src="https://img.shields.io/github/stars/hackerchenzhuo/knowme-research-ai?style=social" alt="GitHub stars"></a>
+  <a href="https://hackerchenzhuo.github.io/knowme-research-ai/en/#research-atlas"><img src="https://img.shields.io/badge/Atlas-Explore-267F70.svg" alt="Explore the research atlas"></a>
+  <a href="https://chromewebstore.google.com/detail/aneomkhamcijmfmeeegocbknklflilof?hl=en"><img src="https://img.shields.io/badge/Chrome-Install-3976A5.svg" alt="Install for Chrome"></a>
+  <a href="./CLI.md"><img src="https://img.shields.io/badge/CLI-Guide-6C757D.svg" alt="Read the CLI guide"></a>
 </p>
 
-<a href="https://hackerchenzhuo.github.io/knowme-research-ai/en/#research-atlas"><img src="./assets/radar-source-walkthrough.gif" width="100%" alt="Screen recording of the public atlas. Follow a coauthorship link, inspect the evidence for When Agents Slow Down, and open the paper on arXiv."></a>
+<a href="https://hackerchenzhuo.github.io/knowme-research-ai/en/radar/"><img src="./assets/radar-reading-walkthrough.gif" width="100%" alt="Scroll a three-paper subscription in Paper Radar, expand a paper’s scoring evidence, and follow a coauthorship link from the atlas to arXiv."></a>
 
-Follow a coauthorship link to *When Agents Slow Down*, inspect the evidence on its paper card, then open the original abstract. [Explore the atlas](https://hackerchenzhuo.github.io/knowme-research-ai/en/#research-atlas) · [Still image](./assets/paper-radar-atlas.png)
+The recording follows three public papers through the subscription view. Scroll the reading list, open a score to inspect its sources, then follow *When Agents Slow Down* from the research atlas to its arXiv abstract. [Try the atlas](https://hackerchenzhuo.github.io/knowme-research-ai/en/#research-atlas)
 
 ## <img src="./assets/radar-mark-method.svg" alt="" height="19"> How paper selection works
 
