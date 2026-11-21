@@ -122,3 +122,10 @@ html:lang(en) .copy-refresh-home .hero h1{font-size:clamp(36px,4.2vw,54px);line-
 .copy-refresh-home .site-footer>p.footer-quote{font-size:11px;font-weight:400;line-height:1.8;color:#93a0aa;letter-spacing:0}
 @media(max-width:600px){.copy-refresh-home .hero h1{font-size:42px}html:lang(en) .copy-refresh-home .hero h1{font-size:36px}.copy-refresh-home .site-footer>p.footer-quote{font-size:10px}}
 @media(max-width:420px){.copy-refresh-home .hero h1{font-size:38px}html:lang(en) .copy-refresh-home .hero h1{font-size:33px}}
+
+/* Paper links in the four bilingual home and Radar navigation bars. */
+.paper-navigation .nav-papers{display:flex;align-items:center;gap:12px}
+.paper-navigation .nav-arxiv{display:inline-flex;align-items:center;min-height:32px;font-size:12px;font-weight:500;color:var(--muted);white-space:nowrap}
+.paper-navigation .nav-arxiv:hover,.paper-navigation .nav-arxiv:focus-visible{color:var(--ink)}
+@media(max-width:600px){.paper-navigation{gap:12px}.paper-navigation .nav-actions{gap:10px}.paper-navigation .nav-papers{gap:9px}.paper-navigation .nav-arxiv{font-size:11px}.paper-navigation .brand-en{display:none}}
+@media(max-width:360px){.paper-header{height:88px}.paper-navigation{display:grid;grid-template-columns:1fr auto;grid-template-rows:46px 26px;align-content:center;column-gap:12px;row-gap:0}.paper-navigation .nav-actions{grid-column:2;grid-row:1}.paper-navigation .nav-links{grid-column:1/-1;grid-row:2;margin:0;justify-content:center;gap:24px}}
