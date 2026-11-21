@@ -57,14 +57,16 @@ This earlier interface capture shows the paper’s first submission date, versio
 
 Research agents can use the command-line interface to rank a local collection and read the results as JSON Lines. Each paper record carries an arXiv identifier and version, its scores, and the source evidence. The first line describes the ranking run.
 
-Download the frozen [CLI 1.2.7 toolkit](https://hackerchenzhuo.github.io/knowme-research-ai/assets/knowme-cli-1.2.7.zip). It exposes the earlier raw-score components; it does **not** include the technical-evidence term, type-aware age relief or full-pool reading index described above. With Node.js 22.13 or newer, run its included three-paper example from the extracted directory.
+Download the [CLI 1.2.9 toolkit](https://hackerchenzhuo.github.io/knowme-research-ai/assets/downloads/knowme-cli-1.2.9.zip). With Node.js 22.13 or newer, run the included three-public-paper example from the extracted directory. No npm installation or model key is needed; installing the Chrome extension does not install these terminal commands.
 
 ```sh
 node scripts/rank-research-papers.mjs \
-  --input examples/frozen-papers.json --profile examples/profile.json \
-  --from 2026-09-01 --to 2026-09-30 \
-  --exclude survey --limit 20 --format jsonl > ranked.jsonl
+  --input examples/public-papers.json --profile examples/common-profile.json \
+  --from 2026-07-01 --to 2026-09-30 \
+  --limit 3 --format jsonl > ranked.jsonl
 ```
+
+The output separates raw-score components, technical evidence, age relief and the reading index. This example ranks only its three supplied papers; the saved 21,833-paper reference is a separate result.
 
 The [full CLI guide](./CLI.md) covers installation, input formats, profile settings, and reading the output in another research tool.
 
