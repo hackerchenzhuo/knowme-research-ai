@@ -12,6 +12,8 @@ SHA-256: `938dbcff7ddc508bf8305c30bce24cf5b73760f5b8e87cf4e399eb99bcb00a3c`
 
 This download includes the ranking CLI and a JSONL-to-RAG example. **The graph-export CLI and citation-refresh commands are not included in this package.**
 
+**Version scope:** this is the frozen **1.2.7** toolkit. Its output contains the earlier raw-score components, without the newer technical-evidence credit, type-aware age relief, `batchPosition` or `display.readingIndex`. The current native policy described on the project homepage is not part of this archive.
+
 ### 1. Extract and check
 
 Extract `knowme-cli-1.2.7.zip` with your archive utility, then open a terminal in the extracted `knowme-cli-1.2.7` directory. On macOS/Linux:
@@ -24,7 +26,7 @@ node scripts/rank-research-papers.mjs --help
 node scripts/rank-research-papers.mjs --list-topics > topics.json
 ```
 
-Use the actual IDs printed by `--list-topics`, such as `agent-harness`, `rag` and `reasoning`. Priorities range from **1 (highest)** to **4 (lowest)**. Topic terms come from the current product catalogue.
+Use the actual IDs printed by `--list-topics`, such as `agent-harness`, `rag` and `reasoning`. Priorities range from **1 (highest)** to **4 (lowest)**. Topic terms come from the product catalogue bundled with version 1.2.7.
 
 ### 2. Run the included synthetic example
 
@@ -118,7 +120,7 @@ A fresh CLI process prepares its own graph/context. The reported 3.03–3.64× r
 ### 6. Package contents and provenance
 
 - `scripts/rank-research-papers.mjs`: original CLI/profile/ranking functions with a precompiled-module loader.
-- `runtime/ranking-core.mjs`: precompiled current product scoring/profile/author/institution logic.
+- `runtime/ranking-core.mjs`: precompiled scoring/profile/author/institution logic frozen for version 1.2.7.
 - `runtime/io-core.mjs`: original read-only input path and record normalization, compiled without graph/network refresh entry points.
 - `runtime/source-provenance.json`: real original source paths/hashes and the core-bundle hash, emitted through the unchanged output contract.
 - `examples/`: synthetic records, a profile, and the JSONL conversion example.

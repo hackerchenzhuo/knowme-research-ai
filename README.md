@@ -17,19 +17,26 @@
 
 <a href="https://hackerchenzhuo.github.io/knowme-research-ai/en/radar/"><img src="./assets/radar-reading-english-20261121.gif" width="100%" alt="English reading preview: scroll three cached public papers, expand the score evidence, and follow the public atlas to an original arXiv source."></a>
 
-An English-interface preview with three public cached papers: scroll the subscription list, inspect the score breakdown, then follow *When Agents Slow Down* through the separate public atlas to its arXiv abstract. [Try the atlas](https://hackerchenzhuo.github.io/knowme-research-ai/en/#research-atlas)
+An English-interface preview recorded before the technical-evidence update, using three public cached papers: scroll the subscription list, inspect the score breakdown, then follow *When Agents Slow Down* through the separate public atlas to its arXiv abstract. [Try the atlas](https://hackerchenzhuo.github.io/knowme-research-ai/en/#research-atlas)
 
 ## <img src="./assets/radar-mark-method.svg" alt="" height="19"> How paper selection works
 
 A search for *agent memory* can turn up papers that mention memory in passing and papers that introduce a memory mechanism. Paper Radar starts with the topics you choose, their priorities, a date window and any terms you want to exclude. It ranks matching papers using their titles and abstracts, publication age, and available evidence about the authors’ earlier work and institutional affiliations.
 
-The base score accounts for matched topics, recency and catalogue evidence. The personal score also reflects the authors’ fit to your reading profile ($\Delta_a$), the institution’s activity in that area ($G$) and any adjustment you set ($\Delta_m$).
+The base score accounts for matched topics, recency and catalogue evidence. The current native reading policy adds author fit ($\Delta_a$), institution context ($G$), explicit follows ($\Delta_m$), recorded technical evidence ($\Delta_{\mathrm{tech}}$) and type-aware age relief ($\Delta_{\mathrm{age}}$):
 
 $$
-s(p,u,t) = s_{\mathrm{base}}(p,u,t) + \Delta_a(p,u,t) + G(p,u,t) + \Delta_m(p,u)
+\begin{aligned}
+s &= s_{\mathrm{base}} + \Delta_a + G + \Delta_m \\
+  &\quad + \Delta_{\mathrm{tech}} + \Delta_{\mathrm{age}}.
+\end{aligned}
 $$
 
-Expand the score to inspect the papers and affiliations behind each term. Switching profiles reuses the same local library. Daily ranking needs no model API key.
+Technical evidence contributes at most **one point**, only for an assessed direction selected in the profile, with priority weighting. Age relief can reduce the existing age deduction but cannot turn it into an age bonus. Both use recorded evidence tied to the paper version and abstract; missing evidence contributes zero to these terms.
+
+Papers are ordered by the final raw score. The reading index shows a tie-aware percentile within the **complete eligible result pool**, before pagination or an output limit. It is a relative position under that profile, not a probability of paper quality; a one-paper or all-tied pool has no percentile.
+
+Expand the score to inspect its supporting sources. Switching profiles reuses the same local library. Daily ranking needs no model API key.
 
 ## <img src="./assets/radar-mark-guide.svg" alt="" height="19"> Try the browser extension
 
@@ -50,7 +57,7 @@ This earlier interface capture shows the paper’s first submission date, versio
 
 Research agents can use the command-line interface to rank a local collection and read the results as JSON Lines. Each paper record carries an arXiv identifier and version, its scores, and the source evidence. The first line describes the ranking run.
 
-Download the [CLI toolkit](https://hackerchenzhuo.github.io/knowme-research-ai/assets/knowme-cli-1.2.7.zip). With Node.js 22.13 or newer, run the included three-paper example from the extracted directory.
+Download the frozen [CLI 1.2.7 toolkit](https://hackerchenzhuo.github.io/knowme-research-ai/assets/knowme-cli-1.2.7.zip). It exposes the earlier raw-score components; it does **not** include the technical-evidence term, type-aware age relief or full-pool reading index described above. With Node.js 22.13 or newer, run its included three-paper example from the extracted directory.
 
 ```sh
 node scripts/rank-research-papers.mjs \
