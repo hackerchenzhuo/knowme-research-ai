@@ -1,5 +1,15 @@
 # Website updates
 
+## 2026-11-23
+
+- Describe Paper Radar 1.3.1, which reaches the Chrome Web Store as an update after review: topical relevance weighted by the credit of the strongest identity-bound author, a bonus and slower decay for institutional technical reports, and collaboration credit and per-direction institution profiles shown beside the score rather than inside it. The public store version is 1.2.9 as of this date.
+- Update the README score description, summarize the forthcoming paper revision's sealed early-citation test, and point the Chinese README to the CLI 1.2.9 toolkit.
+
+## 2026-11-21
+
+- Publish the offline CLI 1.2.9 toolkit with its checksum and update the CLI guide and examples.
+- Add arXiv paper links to the Chinese and English navigation and explain the reading problem in the Radar overview.
+
 ## 2026-11-15
 
 - Simplify the Chinese and English READMEs with a small logo, product descriptions, installation links and usage guides.

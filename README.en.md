@@ -23,16 +23,18 @@ An English-interface preview recorded before the technical-evidence update, usin
 
 A search for *agent memory* can turn up papers that mention memory in passing and papers that introduce a memory mechanism. Paper Radar starts with the topics you choose, their priorities, a date window and any terms you want to exclude. It ranks matching papers using their titles and abstracts, publication age, and available evidence about the authors’ earlier work and institutional affiliations.
 
-The base score accounts for matched topics, recency and catalogue evidence. The current native reading policy adds author fit ($\Delta_a$), institution context ($G$), explicit follows ($\Delta_m$), recorded technical evidence ($\Delta_{\mathrm{tech}}$) and type-aware age relief ($\Delta_{\mathrm{age}}$):
+Version 1.3.1, which reaches the Chrome Web Store as an update after review, weights topical relevance by author credit:
 
 $$
-\begin{aligned}
-s &= s_{\mathrm{base}} + \Delta_a + G + \Delta_m \\
-  &\quad + \Delta_{\mathrm{tech}} + \Delta_{\mathrm{age}}.
-\end{aligned}
+s = R \cdot M_a \cdot M_r \cdot F \cdot \Pi .
 $$
 
-Technical evidence contributes at most **one point**, only for an assessed direction selected in the profile, with priority weighting. Age relief can reduce the existing age deduction but cannot turn it into an age bonus. Both use recorded evidence tied to the paper version and abstract; missing evidence contributes zero to these terms.
+- $R$ is topical relevance: matched topics, model phrases and your personal author fit.
+- $M_a = 1 + 1.25\,(1 - e^{-C/8})$ uses the credit $C$ of the strongest author whose name is bound to a person: by the paper’s own source record, by the author’s affiliation on the paper, or by a shared coauthor with an earlier verified paper. Name-only matches are shown but earn no credit. A top author in a lead role gives $\times 1.99$, and the factor stays below $\times 2.25$.
+- $M_r = 1.25$ for institutional technical reports, a collective byline such as “Kimi Team” or a company-led team of at least thirty authors; these reports also fade more slowly.
+- $F$ is freshness, and $\Pi$ holds the single-author and venue penalties.
+
+Collaboration credit, which brings rising researchers outside the catalogue into view, and institution profiles for each research direction are shown beside the score rather than inside it. Versions up to 1.2.9, including the current CLI toolkit, instead add author fit, institution context and technical evidence to a base score.
 
 Papers are ordered by the final raw score. The reading index shows a tie-aware percentile within the **complete eligible result pool**, before pagination or an output limit. It is a relative position under that profile, not a probability of paper quality; a one-paper or all-tied pool has no percentile.
 
@@ -72,7 +74,7 @@ The [full CLI guide](./CLI.md) covers installation, input formats, profile setti
 
 ## <img src="./assets/radar-mark-results.svg" alt="" height="19"> Research
 
-The study follows 174,640 acquired records. Across 58,094 papers matched to sixteen language-model research directions, 64.5% matched through the abstract alone. On fifty expert-judged retrieval tasks, supplying abstracts to the same frozen reranker raised normalized discounted cumulative gain at rank 10 from 0.412 to 0.598. These experiments explain why the tool caches abstracts alongside titles. [Evaluation and system figures](https://hackerchenzhuo.github.io/knowme-research-ai/en/radar/#research-evidence)
+The study follows 174,640 acquired records. Across 58,094 papers matched to sixteen language-model research directions, 64.5% matched through the abstract alone. On fifty expert-judged retrieval tasks, supplying abstracts to the same frozen reranker raised normalized discounted cumulative gain at rank 10 from 0.412 to 0.598. These experiments explain why the tool caches abstracts alongside titles. The forthcoming paper revision adds a sealed test on 10,386 new papers, in which identity-bound author credit doubled the chance of reaching the top tenth of early citations (risk ratio 1.97). [Evaluation and system figures](https://hackerchenzhuo.github.io/knowme-research-ai/en/radar/#research-evidence)
 
 [**KnowMe Paper Radar: Lightweight Discovery of Promising Papers in the Age of Autoresearch**](https://arxiv.org/abs/2611.23702)  
 Zhuo Chen, Jian Wang, Jinjie Gu, and Lijun Wu. 2026.

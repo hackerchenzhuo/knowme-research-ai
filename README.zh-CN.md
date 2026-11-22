@@ -30,14 +30,14 @@
 
 ## 更新
 
-截至 2026-11-18，论文雷达 **1.2.6 已在 Chrome 商店发布**；**1.2.7 已提交审核**，进一步更新机构证据归属、方向上下文与评分说明。独立 CLI 1.2.7 已可从官网下载，具体用法见下方文档。
+截至 2026-11-23，论文雷达 **1.2.9 已在 Chrome 商店发布**。**1.3.1** 将在审核通过后经商店更新：评分改为以作者信用加权研究相关性，只有与本人身份绑定的作者计入信用，同名而未核实者不计分；机构技术报告获得加成，时效衰减更慢；合作关系带出的新星作者与按研究方向刻画的机构画像在评分旁展示，不计入评分。独立 CLI 1.2.9 可从官网下载，具体用法见下方文档。
 
 [更新记录](./CHANGELOG.md) · [论文雷达隐私](https://hackerchenzhuo.github.io/knowme-research-ai/radar-privacy.html) · [AI 翻译隐私](https://hackerchenzhuo.github.io/knowme-research-ai/privacy.html)
 
 
 ## CLI 与研究工具接入
 
-[下载 KnowMe CLI 1.2.7（ZIP，201 KB）](https://hackerchenzhuo.github.io/knowme-research-ai/assets/knowme-cli-1.2.7.zip)。需要 **Node.js 22.13 或更新版本**，无需 npm 安装；Chrome 扩展安装不会安装终端命令。
+[下载 KnowMe CLI 1.2.9（ZIP，801 KiB）](https://hackerchenzhuo.github.io/knowme-research-ai/assets/downloads/knowme-cli-1.2.9.zip)。需要 **Node.js 22.13 或更新版本**，无需 npm 安装；Chrome 扩展安装不会安装终端命令。
 
 解压后可用附带的明确合成样例验证排名和 JSONL 输出。此包包含离线排名 CLI 与 JSONL 转 RAG 文档示例；不包含图导出或引用更新命令。环境要求与快速示例见[官网 CLI 说明](https://hackerchenzhuo.github.io/knowme-research-ai/en/radar/#cli)，完整操作见[英文 CLI 文档](README.en.md#local-cli)。
 
