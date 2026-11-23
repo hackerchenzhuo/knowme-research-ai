@@ -15,9 +15,9 @@
   <a href="./CLI.md"><img src="https://img.shields.io/badge/CLI-Guide-6C757D.svg" alt="Read the CLI guide"></a>
 </p>
 
-<a href="https://hackerchenzhuo.github.io/knowme-research-ai/en/radar/"><img src="./assets/radar-reading-english-20261121.gif" width="100%" alt="English reading preview: scroll three cached public papers, expand the score evidence, and follow the public atlas to an original arXiv source."></a>
+<a href="https://hackerchenzhuo.github.io/knowme-research-ai/en/radar/"><img src="./assets/radar-reading-english-1.3.1.gif" width="100%" alt="English reading preview of Paper Radar 1.3.1: scroll three cached public papers, open the score evidence to see how author credit weights topical relevance, and follow the public atlas to an original arXiv source."></a>
 
-An English-interface preview recorded before the technical-evidence update, using three public cached papers: scroll the subscription list, inspect the score breakdown, then follow *When Agents Slow Down* through the separate public atlas to its arXiv abstract. [Try the atlas](https://hackerchenzhuo.github.io/knowme-research-ai/en/#research-atlas)
+An English-interface preview of Paper Radar 1.3.1, recorded from the local build with three public cached papers: scroll the subscription list, open the score evidence to see how author credit weights topical relevance, then follow *When Agents Slow Down* through the separate public atlas to its arXiv abstract. [Try the atlas](https://hackerchenzhuo.github.io/knowme-research-ai/en/#research-atlas)
 
 ## <img src="./assets/radar-mark-method.svg" alt="" height="19"> How paper selection works
 
