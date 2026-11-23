@@ -23,7 +23,7 @@ An English-interface preview of Paper Radar 1.3.1, recorded from the local build
 
 A search for *agent memory* can turn up papers that mention memory in passing and papers that introduce a memory mechanism. Paper Radar starts with the topics you choose, their priorities, a date window and any terms you want to exclude. It ranks matching papers using their titles and abstracts, publication age, and available evidence about the authors’ earlier work and institutional affiliations.
 
-Version 1.3.1, which reaches the Chrome Web Store as an update after review, weights topical relevance by author credit:
+Version 1.3.1, published on the Chrome Web Store, weights topical relevance by author credit:
 
 $$
 s = R \cdot M_a \cdot M_r \cdot F \cdot \Pi .

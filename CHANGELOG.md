@@ -5,6 +5,7 @@
 - Describe Paper Radar 1.3.1, which reaches the Chrome Web Store as an update after review: topical relevance weighted by the credit of the strongest identity-bound author, a bonus and slower decay for institutional technical reports, and collaboration credit and per-direction institution profiles shown beside the score rather than inside it. The public store version is 1.2.9 as of this date.
 - Update the README score description, summarize the forthcoming paper revision's sealed early-citation test, and point the Chinese README to the CLI 1.2.9 toolkit.
 - Replace the README reading preview with a new English recording of Paper Radar 1.3.1: scrolling plays at 25 frames per second, and the score evidence shows how author credit weights topical relevance.
+- Mark Paper Radar 1.3.1 as published in the homepage, Radar pages and READMEs: the Chrome Web Store lists 1.3.1 as the public version as of this date.
 
 ## 2026-11-21
 
