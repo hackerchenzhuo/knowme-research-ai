@@ -152,10 +152,10 @@ Illustrative reading checklist. Open each source for the complete paper.
 
     <section class="score-section shell" id="ranking" aria-labelledby="score-title">
       <div class="score-heading"><p class="eyebrow">PAPER RADAR / MULTIDIMENSIONAL SCORING</p><h2 id="score-title">Ranking evidence<br>and preferences</h2></div>
-      <div class="score-copy"><p id="reading-insight">Two papers can both match a search for agent memory. One uses a familiar memory module. The other tests when it fails. For someone choosing a method, that distinction matters before either paper has accumulated citations. Paper Radar brings the abstract, the authors’ earlier work and the papers behind a collaboration into the same reading list. Researchers and agents can follow those sources from the same versioned library.</p><div class="score-signals" aria-label="Scoring dimensions"><span>Topic relevance</span><span>Author evidence</span><span>Institutional evidence</span><span>Recency</span><span>Your interests</span></div><div class="score-result"><span>Layered weighting</span><span aria-hidden="true">→</span><strong>Your reading order</strong></div><p class="score-note">Reading priorities depend on your selected topics and the evidence available in the library.</p><a class="text-link" href="../#personal-ranking-preview">Compare research perspectives <span aria-hidden="true">↗</span></a></div>
+      <div class="score-copy"><p id="reading-insight">Two papers can both match a search for agent memory. One uses a familiar memory module. The other tests when it fails. For someone choosing a method, that distinction matters before either paper has accumulated citations. Paper Radar brings the abstract, the authors’ earlier work and the papers behind a collaboration into the same reading list. Researchers and agents can follow those sources from the same versioned library.</p><div class="score-signals" aria-label="Scoring dimensions"><span>Topic relevance</span><span>Author credit</span><span>Technical reports</span><span>Recency</span><span>Your interests</span></div><div class="score-result"><span>Relevance weighted by credit</span><span aria-hidden="true">→</span><strong>Your reading order</strong></div><p class="score-note">Only authors whose identity is bound earn credit; institution and collaboration evidence appear beside the score. Reading priorities depend on your selected topics and the evidence available in the library.</p><a class="text-link" href="../#personal-ranking-preview">Compare research perspectives <span aria-hidden="true">↗</span></a></div>
     </section>
 
-    <section class="principles shell" aria-label="Tool notes"><div><span class="principle-number">01</span><h2>Multidimensional scores</h2><p>Combine relevance, author and institutional evidence, and recency through layered weighting.</p></div><div><span class="principle-number">02</span><h2>Inspect the evidence</h2><p>Explore scores, author contributions and source records.</p></div><div><span class="principle-number">03</span><h2>Stay with the paper</h2><p>View annotations on arXiv and save papers for your next read.</p></div></section>
+    <section class="principles shell" aria-label="Tool notes"><div><span class="principle-number">01</span><h2>Multidimensional scores</h2><p>Weight topical relevance by identity-bound author credit, technical reports and recency.</p></div><div><span class="principle-number">02</span><h2>Inspect the evidence</h2><p>Explore scores, author contributions and source records.</p></div><div><span class="principle-number">03</span><h2>Stay with the paper</h2><p>View annotations on arXiv and save papers for your next read.</p></div></section>
 
 
 
@@ -200,6 +200,15 @@ Illustrative reading checklist. Open each source for the complete paper.
           <p>Preparation timing covers the native response call through complete serialization from loaded inputs, on an Intel Xeon Platinum 8369B CPU host with 800 GiB memory and Node.js v26.4.0. Initial loading and worker setup are excluded. These timings apply to retained state in a persistent local service; independent CLI processes prepare their own contexts.</p>
         </div>
       </details>
+      <details class="research-system" open>
+        <summary>Score cards: every factor of a paper’s score is visible</summary>
+        <figure>
+          <div class="research-system-scroll" tabindex="0" role="region" aria-label="Three example score cards; scroll horizontally on smaller screens">
+            <img src="../../assets/radar-paper-score-cards.webp" width="2150" height="685" loading="lazy" decoding="async" alt="Three score cards from Figure 17 of the paper. RRSI, a hit: rank 12 of 21,838 (181 by relevance alone); relevance 36.6, author factor 1.50 from a coauthor-linked first author, freshness 0.81, score 44.5; 48 citations by 21 November. GenMem, uncertain: rank 316–323; no identity-bound author and one name-only match pending; relevance 35.5, freshness 0.84, score 29.9; no citations. Kimi K3, a blind spot: rank 749–772 (2,406 by relevance alone); a collective byline gives the report factor 1.25 and a 240-day half-life; score 26.8; 513 citations. Institutions are listed but not scored.">
+          </div>
+          <figcaption>Three papers chosen before the current score, as illustrations rather than evidence: a hit by early citations (RRSI), a paper whose only catalogue name is pending (GenMem) and a blind spot (Kimi K3), all from a 21,838-paper pool. Figure 17 of the <a href="https://arxiv.org/abs/2611.23702" target="_blank" rel="noopener noreferrer">paper</a>. <a href="../../assets/radar-paper-score-cards.webp" target="_blank" rel="noopener noreferrer">Open the full image <span aria-hidden="true">↗</span></a></figcaption>
+        </figure>
+      </details>
       <div class="research-handoff">
         <div>
           <h3>Inspect in the browser. Reuse through the CLI.</h3>
@@ -207,13 +216,13 @@ Illustrative reading checklist. Open each source for the complete paper.
         </div>
         <a class="text-link" href="../#research-atlas">Explore the public Research Atlas <span aria-hidden="true">↗</span></a>
       </div>
-      <details class="research-system">
-        <summary>System view: from a reading profile to shared evidence</summary>
+      <details class="research-system" open>
+        <summary>System view: from a reading profile to a score</summary>
         <figure>
           <div class="research-system-scroll" tabindex="0" role="region" aria-label="Paper Radar system diagram; scroll horizontally on smaller screens">
-            <img src="../../assets/research-radar-system-v54.svg" width="936" height="648" loading="lazy" decoding="async" alt="Four-column Paper Radar architecture: profile and canonical sources feed typed author–paper evidence; author and institution context feed a shared engine with source and context caches, browser output and JSONL output. A return loop reuses versioned sources and profile fingerprints.">
+            <img src="../../assets/radar-paper-overview.webp" width="2150" height="828" loading="lazy" decoding="async" alt="Figure 2 of the paper in four panels. (a) A reading profile with topic priorities and an exclusion over a versioned library of 174.6k papers. (b) A source graph of typed author–paper evidence, propagated in two author–paper–author steps weighted by topic and recency; verified affiliations and collective bylines are marked. (c) A calibrated personal author term, and identity before credit: a paper- or affiliation-bound author or an earlier coauthor link earns credit, a name-only match stays pending. (d) A shared engine computes R · M_a · M_r · F · Π with source and context caches and serves the browser view, JSONL for agents and a separate public atlas from a fixed snapshot.">
           </div>
-          <figcaption>Source and context caches support the browser and structured agent outputs. The public atlas retains a separate fixed snapshot. <a href="../../assets/research-radar-system-v54.svg" target="_blank" rel="noopener noreferrer">Open the full diagram <span aria-hidden="true">↗</span></a></figcaption>
+          <figcaption>KnowMe weights topical relevance by the credit of identity-bound authors and shows collaboration and institution context beside the score. Source and context caches serve the browser and structured agent outputs; the public atlas keeps a separate fixed snapshot. Figure 2 of the <a href="https://arxiv.org/abs/2611.23702" target="_blank" rel="noopener noreferrer">paper</a>. <a href="../../assets/radar-paper-overview.webp" target="_blank" rel="noopener noreferrer">Open the full diagram <span aria-hidden="true">↗</span></a></figcaption>
         </figure>
       </details>
     </section>
