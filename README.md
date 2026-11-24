@@ -78,7 +78,7 @@ The [full CLI guide](./CLI.md) covers installation, input formats, profile setti
 
 ## <img src="./assets/radar-mark-results.svg" alt="" height="19"> Research
 
-<p><img src="./assets/radar-paper-arxiv-growth.png" width="100%" alt="Figure 1 of the paper. (a) Monthly all-arXiv and primary computer-science submissions from 2010 to October 2026, with a fitted model continuation to 2030 and its three-model range. (b) Fitted annualized growth of 9.53% for 2020–22 and 25.16% for 2023–25, an observed 36.5% rise in January–October 2026, and monthly June–October CS counts for 2025 and 2026."></p>
+<p><img src="./assets/radar-paper-arxiv-growth.png" width="100%" alt="Figure 1 of the paper. (a) Monthly all-arXiv and primary computer-science submissions from 2010 to October 2026, with a fitted model continuation to 2030 and its three-model range. (b) Fitted annualized growth of 9.53% (95% interval 5.83–13.36%) for 2020–22 and 25.16% (22.27–28.11%) for 2023–25, and an observed 36.5% rise in January–October 2026. (c) Monthly June–October CS counts for 2025 and 2026."></p>
 
 *Primary computer-science submissions to arXiv rose 36.5% in January–October 2026 over the same months of 2025 (Figure 1 of the paper). The dashed segment is a model continuation, not an observation.*
 

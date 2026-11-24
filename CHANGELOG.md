@@ -1,5 +1,10 @@
 # Website updates
 
+## 2026-11-25
+
+- Replace README Figure 1 with its redrawn version from the next paper revision: the same data, with the two fitted growth rates printed with their 95% intervals instead of error bars and the June–October counts labelled.
+- Add the held-out evidence figure (Figure 5 of the paper) to the Chinese and English Radar pages: identity states and credit levels against early-citation hits, the gain of each month’s top tenth over relevance alone, and the trade-off between credit and newcomer winners, with intervals printed as text.
+
 ## 2026-11-24
 
 - Add four figures from the KnowMe Paper Radar paper without repeating any of them across the README and the website: arXiv growth (Figure 1) and the research-loop boundary (Figure 16) in the READMEs; the method overview (Figure 2) and the score cards (Figure 17) on the Radar pages, where the overview replaces the earlier system diagram.
