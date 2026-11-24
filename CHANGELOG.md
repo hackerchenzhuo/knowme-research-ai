@@ -1,5 +1,11 @@
 # Website updates
 
+## 2026-11-24
+
+- Add four figures from the KnowMe Paper Radar paper without repeating any of them across the README and the website: arXiv growth (Figure 1) and the research-loop boundary (Figure 16) in the READMEs; the method overview (Figure 2) and the score cards (Figure 17) on the Radar pages, where the overview replaces the earlier system diagram.
+- Describe the Radar ranking on the website as topical relevance weighted by identity-bound author credit, technical reports and recency, with institution and collaboration evidence shown beside the score.
+- Summarize the sealed early-citation test from version 2 of the paper, now public on arXiv: papers with an identity-bound author reached the top tenth about twice as often as matched papers without one.
+
 ## 2026-11-23
 
 - Describe Paper Radar 1.3.1, which reaches the Chrome Web Store as an update after review: topical relevance weighted by the credit of the strongest identity-bound author, a bonus and slower decay for institutional technical reports, and collaboration credit and per-direction institution profiles shown beside the score rather than inside it. The public store version is 1.2.9 as of this date.

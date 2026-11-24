@@ -59,6 +59,10 @@ This earlier interface capture shows the paper’s first submission date, versio
 
 Research agents can use the command-line interface to rank a local collection and read the results as JSON Lines. Each paper record carries an arXiv identifier and version, its scores, and the source evidence. The first line describes the ranking run.
 
+<p><img src="./assets/radar-paper-research-loop.png" width="100%" alt="Figure 16 of the paper. Left: what KnowMe supplies, namely the reading profile and date window, titles, abstracts and identifiers, author paths with their sources, and institution context. Centre: these records pass as JSONL to an agent or researcher who retrieves, plans, runs and revises. Right: outcomes are judged by reference value, reproducibility, and time and cost. A dashed arrow marks a future step from evaluated outcomes back to author context."></p>
+
+*Where KnowMe sits in a research loop (Figure 16 of the paper). It supplies scoped evidence with source links; the agent or researcher decides what to plan, run and revise. The dashed path back from evaluated outcomes is future work.*
+
 Download the [CLI 1.2.9 toolkit](https://hackerchenzhuo.github.io/knowme-research-ai/assets/downloads/knowme-cli-1.2.9.zip). With Node.js 22.13 or newer, run the included three-public-paper example from the extracted directory. No npm installation or model key is needed; installing the Chrome extension does not install these terminal commands.
 
 ```sh
@@ -74,7 +78,11 @@ The [full CLI guide](./CLI.md) covers installation, input formats, profile setti
 
 ## <img src="./assets/radar-mark-results.svg" alt="" height="19"> Research
 
-The study follows 174,640 acquired records. Across 58,094 papers matched to sixteen language-model research directions, 64.5% matched through the abstract alone. On fifty expert-judged retrieval tasks, supplying abstracts to the same frozen reranker raised normalized discounted cumulative gain at rank 10 from 0.412 to 0.598. These experiments explain why the tool caches abstracts alongside titles. The forthcoming paper revision adds a sealed test on 10,386 new papers, in which identity-bound author credit doubled the chance of reaching the top tenth of early citations (risk ratio 1.97). [Evaluation and system figures](https://hackerchenzhuo.github.io/knowme-research-ai/en/radar/#research-evidence)
+<p><img src="./assets/radar-paper-arxiv-growth.png" width="100%" alt="Figure 1 of the paper. (a) Monthly all-arXiv and primary computer-science submissions from 2010 to October 2026, with a fitted model continuation to 2030 and its three-model range. (b) Fitted annualized growth of 9.53% for 2020–22 and 25.16% for 2023–25, an observed 36.5% rise in January–October 2026, and monthly June–October CS counts for 2025 and 2026."></p>
+
+*Primary computer-science submissions to arXiv rose 36.5% in January–October 2026 over the same months of 2025 (Figure 1 of the paper). The dashed segment is a model continuation, not an observation.*
+
+The study follows 174,640 acquired records. Across 58,094 papers matched to sixteen language-model research directions, 64.5% matched through the abstract alone. On fifty expert-judged retrieval tasks, supplying abstracts to the same frozen reranker raised normalized discounted cumulative gain at rank 10 from 0.412 to 0.598. These experiments explain why the tool caches abstracts alongside titles. Version 2 of the paper adds a sealed test on 10,386 new papers: papers with an identity-bound author reached the top tenth of early citations about twice as often as matched papers without one (risk ratio 1.97). [Evaluation and system figures](https://hackerchenzhuo.github.io/knowme-research-ai/en/radar/#research-evidence)
 
 [**KnowMe Paper Radar: Lightweight Discovery of Promising Papers in the Age of Autoresearch**](https://arxiv.org/abs/2611.23702)  
 Zhuo Chen, Jian Wang, Jinjie Gu, and Lijun Wu. 2026.
