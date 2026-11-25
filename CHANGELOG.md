@@ -2,8 +2,8 @@
 
 ## 2026-11-25
 
-- Replace README Figure 1 with its redrawn version from the next paper revision: the same data, with the two fitted growth rates printed with their 95% intervals instead of error bars and the June–October counts labelled.
-- Add the held-out evidence figure (Figure 5 of the paper) to the Chinese and English Radar pages: identity states and credit levels against early-citation hits, the gain of each month’s top tenth over relevance alone, and the trade-off between credit and newcomer winners, with intervals printed as text.
+- Keep the earlier drawing of README Figure 1 and remove its two error bars; the fitted growth rates stay printed on the bars.
+- Add the held-out evidence figure (Figure 5 of the paper) to the Chinese and English Radar pages: identity states and credit levels against early-citation hits, the gain of each month’s top tenth over relevance alone, and the trade-off between credit and newcomer winners. The figure prints estimates only; grey cells mark gains whose 95% interval includes zero.
 
 ## 2026-11-24
 
