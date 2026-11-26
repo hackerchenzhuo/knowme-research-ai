@@ -1,5 +1,10 @@
 # Website updates
 
+## 2026-11-26
+
+- Record version 3 of the KnowMe Paper Radar paper, submitted to arXiv on 25 November 2026 to replace version 2; the paper links on this website show it once arXiv announces it. It describes the data scale as a design point set by each reader’s scope, checks whether the early-citation result merely tracks the prominence of authors, explains where every scoring constant comes from (only three were fitted to outcomes, and all 151 of the 224 tuning forms that met both declared constraints beat relevance alone on the fitting months), and cites 25 more research papers while dropping its citations of four research-tool websites, a GitHub repository and a blog post. In the appendix, the word cloud of the 100 leading expressions becomes a term map (Figure 29) that places them by the reading directions that use them.
+- Drop the paper version from the README’s sealed-test summary and from the Chinese Radar page; Figures 1, 2, 5, 16 and 17 cited on this website keep their numbers in version 3.
+
 ## 2026-11-25
 
 - Keep the earlier drawing of README Figure 1 and remove its two error bars; the fitted growth rates stay printed on the bars.
