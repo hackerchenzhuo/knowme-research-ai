@@ -23,18 +23,18 @@ An English-interface preview of Paper Radar 1.3.1, recorded from the local build
 
 A search for *agent memory* can turn up papers that mention memory in passing and papers that introduce a memory mechanism. Paper Radar starts with the topics you choose, their priorities, a date window and any terms you want to exclude. It ranks matching papers using their titles and abstracts, publication age, and available evidence about the authors’ earlier work and institutional affiliations.
 
-Version 1.3.1, published on the Chrome Web Store, weights topical relevance by author credit:
+Version 1.4.0, submitted to the Chrome Web Store on 28 November 2026 and published automatically after review (the store offers 1.3.2 until then), weights topical relevance by author credit:
 
 $$
 s = R \cdot M_a \cdot M_r \cdot F \cdot \Pi .
 $$
 
-- $R$ is topical relevance: matched topics, model phrases and your personal author fit.
-- $M_a = 1 + 1.25\,(1 - e^{-C/8})$ uses the credit $C$ of the strongest author whose name is bound to a person: by the paper’s own source record, by the author’s affiliation on the paper, or by a shared coauthor with an earlier verified paper. Name-only matches are shown but earn no credit. A top author in a lead role gives $\times 1.99$, and the factor stays below $\times 2.25$.
+- $R$ is topical relevance: matched topics, model phrases and your personal author fit. A topic term counts fully in the title, the opening sentence or a stated contribution, three quarters as a single passing mention and not at all when negated.
+- $M_a = 1 + 1.25\,(1 - e^{-C/8})$ uses the credit $C$ of the strongest author whose name is bound to a person: by the paper’s own source record, by the author’s affiliation on the paper, or by a shared coauthor with an earlier verified paper. Name-only matches are shown but earn no credit. A top author in a lead role gives $\times 1.99$, and the factor stays below $\times 2.25$. Catalogue credit comes from AMiner rankings, including the 2026 AI 2000 lists, and, at the lowest level, from high-output AI faculty of the sixty leading CSRankings departments; the CSRankings table is downloaded on your device and is not shipped with the extension. Collaboration credit counts only as a small capped share: on its own it gives at most $\times 1.21$.
 - $M_r = 1.25$ for institutional technical reports, a collective byline such as “Kimi Team” or a company-led team of at least thirty authors; these reports also fade more slowly.
 - $F$ is freshness, and $\Pi$ holds the single-author and venue penalties.
 
-Collaboration credit, which brings rising researchers outside the catalogue into view, and institution profiles for each research direction are shown beside the score rather than inside it. Versions up to 1.2.9, including the current CLI toolkit, instead add author fit, institution context and technical evidence to a base score.
+Collaboration credit passes from identity-bound researchers to their coauthors for up to two rounds and is shared among a joint paper’s other authors by byline position (1 for the first author, halving with each later position, ½ for the last author), so it can bring researchers outside the catalogue into view; the byline shades credited authors, deeper for more credit. In the paper’s pre-declared check on already-opened September–October 2026 papers, collaboration credit did no better than credit seeded from activity-matched random researchers, so it stays a capped design choice rather than a validated signal. Institution profiles for each research direction are shown beside the score rather than inside it. Versions up to 1.2.9, including the current CLI toolkit, instead add author fit, institution context and technical evidence to a base score.
 
 Papers are ordered by the final raw score. The reading index shows a tie-aware percentile within the **complete eligible result pool**, before pagination or an output limit. It is a relative position under that profile, not a probability of paper quality; a one-paper or all-tied pool has no percentile.
 

@@ -1,5 +1,11 @@
 # Website updates
 
+## 2026-11-28
+
+- Describe Paper Radar 1.4.0, submitted to the Chrome Web Store on 28 November 2026 and published automatically after review; the public store version is 1.3.2 as of this date. Author credit adds the 2026 AMiner AI 2000 lists and, at the lowest level, high-output AI faculty of the sixty leading CSRankings departments (the CSRankings table is downloaded on the reader’s device and is not shipped); topic matching separates a paper’s own contribution from passing mentions; collaboration credit, shared by byline position over up to two rounds, enters the score only as a small capped share; credited authors are shaded in the byline.
+- Record version 4 of the KnowMe Paper Radar paper, submitted to arXiv on 28 November 2026 to replace version 3; the paper links on this website show it once arXiv announces it. It describes release 1.4 and a pre-declared check on the already-opened September–October months, in which collaboration credit did no better than activity-matched random seeds. Figures 1, 2, 5, 16 and 17 cited on this website keep their numbers; the Figure 2 caption on the Radar pages now matches version 4.
+- Add the CSRankings table download through jsDelivr and the AMiner and CSRankings credits to the Paper Radar privacy page.
+
 ## 2026-11-26
 
 - Record version 3 of the KnowMe Paper Radar paper, submitted to arXiv on 25 November 2026 to replace version 2; the paper links on this website show it once arXiv announces it. It describes the data scale as a design point set by each reader’s scope, checks whether the early-citation result merely tracks the prominence of authors, explains where every scoring constant comes from (only three were fitted to outcomes, and all 151 of the 224 tuning forms that met both declared constraints beat relevance alone on the fitting months), and cites 25 more research papers while dropping its citations of four research-tool websites, a GitHub repository and a blog post. In the appendix, the word cloud of the 100 leading expressions becomes a term map (Figure 29) that places them by the reading directions that use them.
